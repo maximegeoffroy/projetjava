@@ -6,6 +6,8 @@
 
 package megacasting.ihm;
 
+
+
 /**
  *
  * @author ihamel
@@ -17,6 +19,7 @@ public class contratFrame extends javax.swing.JFrame {
      */
     public contratFrame() {
         initComponents();
+        
     }
 
     /**
@@ -29,36 +32,80 @@ public class contratFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         contratPanel = new javax.swing.JPanel();
-        test = new javax.swing.JButton();
+        supprimerButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        contratListe = new javax.swing.JList();
+        modifierButton = new javax.swing.JButton();
+        contratLibelleLabel = new javax.swing.JLabel();
+        contratLibelleText = new javax.swing.JTextField();
+        ajouterButton = new javax.swing.JButton();
 
-        test.setText("testCommit");
+        supprimerButton.setText("Supprimer");
+
+        jScrollPane1.setViewportView(contratListe);
+
+        modifierButton.setText("Modifier");
+
+        contratLibelleLabel.setText("Contrat ");
+
+        ajouterButton.setText("Ajouter");
 
         javax.swing.GroupLayout contratPanelLayout = new javax.swing.GroupLayout(contratPanel);
         contratPanel.setLayout(contratPanelLayout);
         contratPanelLayout.setHorizontalGroup(
             contratPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contratPanelLayout.createSequentialGroup()
-                .addGap(132, 132, 132)
-                .addComponent(test)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(contratPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(supprimerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addGroup(contratPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(contratPanelLayout.createSequentialGroup()
+                        .addComponent(contratLibelleLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(contratLibelleText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contratPanelLayout.createSequentialGroup()
+                        .addComponent(ajouterButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(modifierButton)))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         contratPanelLayout.setVerticalGroup(
             contratPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contratPanelLayout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(test)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(contratPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contratPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(supprimerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(contratPanelLayout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addGroup(contratPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(contratLibelleLabel)
+                            .addComponent(contratLibelleText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(91, 91, 91)
+                        .addGroup(contratPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(modifierButton)
+                            .addComponent(ajouterButton))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contratPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(contratPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contratPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(contratPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -100,7 +147,13 @@ public class contratFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ajouterButton;
+    private javax.swing.JLabel contratLibelleLabel;
+    private javax.swing.JTextField contratLibelleText;
+    private javax.swing.JList contratListe;
     private javax.swing.JPanel contratPanel;
-    private javax.swing.JButton test;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton modifierButton;
+    private javax.swing.JButton supprimerButton;
     // End of variables declaration//GEN-END:variables
 }
