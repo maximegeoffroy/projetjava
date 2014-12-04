@@ -28,15 +28,37 @@ public class contratFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        contratPanel = new javax.swing.JPanel();
+        test = new javax.swing.JButton();
+
+        test.setText("jButton1");
+
+        javax.swing.GroupLayout contratPanelLayout = new javax.swing.GroupLayout(contratPanel);
+        contratPanel.setLayout(contratPanelLayout);
+        contratPanelLayout.setHorizontalGroup(
+            contratPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contratPanelLayout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addComponent(test)
+                .addContainerGap(195, Short.MAX_VALUE))
+        );
+        contratPanelLayout.setVerticalGroup(
+            contratPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contratPanelLayout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(test)
+                .addContainerGap(193, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(contratPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(contratPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -78,5 +100,7 @@ public class contratFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel contratPanel;
+    private javax.swing.JButton test;
     // End of variables declaration//GEN-END:variables
 }
