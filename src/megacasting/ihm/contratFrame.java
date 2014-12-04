@@ -31,7 +31,7 @@ public class contratFrame extends javax.swing.JFrame {
         contratPanel = new javax.swing.JPanel();
         test = new javax.swing.JButton();
 
-        test.setText("jButton1");
+        test.setText("testCommit");
 
         javax.swing.GroupLayout contratPanelLayout = new javax.swing.GroupLayout(contratPanel);
         contratPanel.setLayout(contratPanelLayout);
@@ -40,7 +40,7 @@ public class contratFrame extends javax.swing.JFrame {
             .addGroup(contratPanelLayout.createSequentialGroup()
                 .addGap(132, 132, 132)
                 .addComponent(test)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         contratPanelLayout.setVerticalGroup(
             contratPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
