@@ -4,46 +4,19 @@
  * and open the template in the editor.
  */
 
-package megacasting;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
+package megacasting.ihm;
 
 /**
  *
  * @author ihamel
  */
-public class mainFrame extends javax.swing.JFrame {
+public class offreFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form mainFrame
+     * Creates new form offreFrame
      */
-    private Connection cnx;
-    
-    public mainFrame() {
+    public offreFrame() {
         initComponents();
-        
-        String driver = "net.sourceforge.jtds.jdbc.Driver";
-        String url = "jdbc:jtds:sqlserver://localhost/MegaCastingMGEOFF";
-        String user = "sa";
-        String password = "sql2012";
-        
-        try {
-            Class.forName(driver);
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-        try {
-            cnx = DriverManager.getConnection(url,user,password);
-            System.out.println("Connexion réussie");
-            
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-            
     }
 
     /**
@@ -54,8 +27,6 @@ public class mainFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,20 +59,20 @@ public class mainFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(offreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(offreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(offreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(offreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mainFrame().setVisible(true);
+                new offreFrame().setVisible(true);
             }
         });
     }
