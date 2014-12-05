@@ -36,7 +36,7 @@ public class MetierDAO {
             ResultSet rs = stmt.executeQuery("SELECT MAX(Identifiant) AS ID FROM Metier");
            
             if(rs.next()){
-               id = rs.getInt("Identifiant");
+               id = rs.getInt("ID");
             }
             metier.setId(id);
             

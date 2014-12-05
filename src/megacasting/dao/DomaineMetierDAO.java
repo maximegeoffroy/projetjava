@@ -72,9 +72,14 @@ public class DomaineMetierDAO {
         }
     }
     
-    public static void supprimer(Connection connection, DomaineMetier domaineMetier){
+    public static void supprimer(Connection connection, DomaineMetier domaineMetier)throws Exception{
         
         Statement stmt = null;
+        DomaineMetier testDM = trouver(connection,domaineMetier.getLibelle());
+        
+        if(testDM == null){
+            throw new Exception("Ce domaine metier n'existe pas, il ne peut pas être supprimée");
+        }
        
        try{       
            stmt = connection.createStatement();
@@ -142,6 +147,35 @@ public class DomaineMetierDAO {
               
               dm = new DomaineMetier(libelle);
               dm.setId(id);
+          }
+            
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return dm;
+    }
+    
+    public static DomaineMetier trouver(Connection connection, int idDomaine){
+        DomaineMetier dm = null;
+        Statement stmt = null;
+        
+        try{
+            stmt = connection.createStatement();
+            ResultSet rs =  stmt.executeQuery("SELECT Libelle FROM Domaine_Metier WHERE Identifiant = " + idDomaine);
+          
+          if(rs.next()){
+              String libelle = rs.getString("Libelle");
+              
+              dm = new DomaineMetier(libelle);
+              dm.setId(idDomaine);
           }
             
         }catch(Exception ex){

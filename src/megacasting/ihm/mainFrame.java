@@ -62,6 +62,11 @@ public class mainFrame extends javax.swing.JFrame {
         contratButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                fermeture(evt);
+            }
+        });
 
         offreButton.setText("Offre");
         offreButton.addActionListener(new java.awt.event.ActionListener() {
@@ -99,10 +104,9 @@ public class mainFrame extends javax.swing.JFrame {
                 .addGap(129, 129, 129)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(contratButton, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(metierButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(offreButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(societeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)))
+                    .addComponent(metierButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(offreButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(societeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
                 .addContainerGap(165, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
@@ -148,6 +152,14 @@ public class mainFrame extends javax.swing.JFrame {
     private void contratButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratButtonActionPerformed
         new contratFrame().setVisible(true);
     }//GEN-LAST:event_contratButtonActionPerformed
+
+    private void fermeture(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_fermeture
+        try {
+            cnx.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_fermeture
 
     /**
      * @param args the command line arguments

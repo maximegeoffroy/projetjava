@@ -6,6 +6,18 @@
 
 package megacasting.ihm;
 
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import megacasting.dao.DomaineMetierDAO;
+import megacasting.dao.MetierDAO;
+import megacasting.entite.DomaineMetier;
+import megacasting.entite.Metier;
+
 /**
  *
  * @author ihamel
@@ -17,6 +29,9 @@ public class metierFrame extends javax.swing.JFrame {
      */
     public metierFrame() {
         initComponents();
+        
+        refreshListMetier();
+        refreshListDomaineMetier();
     }
 
     /**
@@ -28,20 +43,382 @@ public class metierFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelMetierDomaineMetier = new javax.swing.JPanel();
+        panelMetier = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listMetier = new javax.swing.JList();
+        labelLibelleMetier = new javax.swing.JLabel();
+        textFieldLibelleMetierModifier = new javax.swing.JTextField();
+        labelLibelleDomaine = new javax.swing.JLabel();
+        buttonModifierMetier = new javax.swing.JButton();
+        buttonAjouterMetier = new javax.swing.JButton();
+        labelDomaineMetier = new javax.swing.JLabel();
+        buttonSupprimerMetier = new javax.swing.JButton();
+        labelTitreMetier = new javax.swing.JLabel();
+        labelGestionMetier = new javax.swing.JLabel();
+        panelDomaineMetier = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listDomaineMetier = new javax.swing.JList();
+        labelTitreDomaineMetier = new javax.swing.JLabel();
+        labelLibelleDomaineMetier = new javax.swing.JLabel();
+        buttonSupprimerDomaineMetier = new javax.swing.JButton();
+        buttonModifierDomaineMetier = new javax.swing.JButton();
+        textFieldLibelleDomaineMetier = new javax.swing.JTextField();
+        buttonAjouterDomaineMetier = new javax.swing.JButton();
+
+        panelMetier.setBackground(new java.awt.Color(153, 153, 153));
+
+        listMetier.setBorder(new javax.swing.border.MatteBorder(null));
+        listMetier.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listMetierValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(listMetier);
+
+        labelLibelleMetier.setText("Libellé");
+
+        labelLibelleDomaine.setText("Domaine Metier");
+
+        buttonModifierMetier.setText("Modifier");
+        buttonModifierMetier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonModifierMetierActionPerformed(evt);
+            }
+        });
+
+        buttonAjouterMetier.setText("Ajouter un metier");
+        buttonAjouterMetier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAjouterMetierActionPerformed(evt);
+            }
+        });
+
+        labelDomaineMetier.setBackground(new java.awt.Color(255, 255, 255));
+
+        buttonSupprimerMetier.setText("Supprimer");
+        buttonSupprimerMetier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSupprimerMetierActionPerformed(evt);
+            }
+        });
+
+        labelTitreMetier.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        labelTitreMetier.setText("Métier");
+
+        javax.swing.GroupLayout panelMetierLayout = new javax.swing.GroupLayout(panelMetier);
+        panelMetier.setLayout(panelMetierLayout);
+        panelMetierLayout.setHorizontalGroup(
+            panelMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMetierLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMetierLayout.createSequentialGroup()
+                        .addComponent(labelTitreMetier)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelMetierLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelMetierLayout.createSequentialGroup()
+                                .addGroup(panelMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(labelLibelleDomaine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(buttonSupprimerMetier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelDomaineMetier, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(buttonModifierMetier)))
+                            .addGroup(panelMetierLayout.createSequentialGroup()
+                                .addComponent(labelLibelleMetier)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(textFieldLibelleMetierModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonAjouterMetier)
+                        .addGap(107, 107, 107))))
+        );
+        panelMetierLayout.setVerticalGroup(
+            panelMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMetierLayout.createSequentialGroup()
+                .addGroup(panelMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMetierLayout.createSequentialGroup()
+                        .addGroup(panelMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelMetierLayout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addGroup(panelMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(labelLibelleMetier)
+                                    .addComponent(textFieldLibelleMetierModifier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(labelLibelleDomaine)
+                                    .addComponent(labelDomaineMetier, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMetierLayout.createSequentialGroup()
+                                .addGap(67, 67, 67)
+                                .addComponent(buttonAjouterMetier, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonSupprimerMetier)
+                            .addComponent(buttonModifierMetier)))
+                    .addGroup(panelMetierLayout.createSequentialGroup()
+                        .addComponent(labelTitreMetier)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        labelGestionMetier.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelGestionMetier.setText("Gestion des métiers");
+
+        panelDomaineMetier.setBackground(new java.awt.Color(153, 153, 153));
+
+        listDomaineMetier.setBorder(new javax.swing.border.MatteBorder(null));
+        listDomaineMetier.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listDomaineMetierValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(listDomaineMetier);
+
+        labelTitreDomaineMetier.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        labelTitreDomaineMetier.setText("Domaine métier");
+
+        labelLibelleDomaineMetier.setText("Libéllé");
+
+        buttonSupprimerDomaineMetier.setText("Supprimer");
+        buttonSupprimerDomaineMetier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSupprimerDomaineMetierActionPerformed(evt);
+            }
+        });
+
+        buttonModifierDomaineMetier.setText("Modifier");
+        buttonModifierDomaineMetier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonModifierDomaineMetierActionPerformed(evt);
+            }
+        });
+
+        buttonAjouterDomaineMetier.setText("Ajouter un domaine metier");
+        buttonAjouterDomaineMetier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAjouterDomaineMetierActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelDomaineMetierLayout = new javax.swing.GroupLayout(panelDomaineMetier);
+        panelDomaineMetier.setLayout(panelDomaineMetierLayout);
+        panelDomaineMetierLayout.setHorizontalGroup(
+            panelDomaineMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDomaineMetierLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDomaineMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDomaineMetierLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelDomaineMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonSupprimerDomaineMetier)
+                            .addComponent(labelLibelleDomaineMetier))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelDomaineMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonModifierDomaineMetier)
+                            .addGroup(panelDomaineMetierLayout.createSequentialGroup()
+                                .addComponent(textFieldLibelleDomaineMetier, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                                .addComponent(buttonAjouterDomaineMetier))))
+                    .addComponent(labelTitreDomaineMetier))
+                .addGap(78, 78, 78))
+        );
+        panelDomaineMetierLayout.setVerticalGroup(
+            panelDomaineMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDomaineMetierLayout.createSequentialGroup()
+                .addComponent(labelTitreDomaineMetier)
+                .addGroup(panelDomaineMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelDomaineMetierLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelDomaineMetierLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(panelDomaineMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelLibelleDomaineMetier)
+                            .addComponent(textFieldLibelleDomaineMetier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonAjouterDomaineMetier, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelDomaineMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonSupprimerDomaineMetier)
+                            .addComponent(buttonModifierDomaineMetier))))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panelMetierDomaineMetierLayout = new javax.swing.GroupLayout(panelMetierDomaineMetier);
+        panelMetierDomaineMetier.setLayout(panelMetierDomaineMetierLayout);
+        panelMetierDomaineMetierLayout.setHorizontalGroup(
+            panelMetierDomaineMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMetierDomaineMetierLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelMetierDomaineMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(panelDomaineMetier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelMetier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelGestionMetier, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+        panelMetierDomaineMetierLayout.setVerticalGroup(
+            panelMetierDomaineMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMetierDomaineMetierLayout.createSequentialGroup()
+                .addComponent(labelGestionMetier)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelMetier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(panelDomaineMetier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelMetierDomaineMetier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(panelMetierDomaineMetier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void listMetierValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listMetierValueChanged
+        
+        Metier m = (Metier)listMetier.getSelectedValue();
+        
+        if(m != null) {
+            //Metier
+            textFieldLibelleMetierModifier.setText(m.getLibelle());
+            int idDomaine = m.getIdDomaineMetier();
+            DomaineMetier dm = DomaineMetierDAO.trouver(mainFrame.cnx,idDomaine);
+            labelDomaineMetier.setText(dm.getLibelle());
+        }
+    }//GEN-LAST:event_listMetierValueChanged
+
+    private void buttonModifierMetierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModifierMetierActionPerformed
+        Metier m = (Metier)listMetier.getSelectedValue();
+        m.setLibelle(textFieldLibelleMetierModifier.getText());
+        try {
+            MetierDAO.modifier(mainFrame.cnx, m);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(null, "Modification réussie");
+        refreshListMetier(listMetier.getSelectedIndex());
+    }//GEN-LAST:event_buttonModifierMetierActionPerformed
+
+    private void buttonAjouterMetierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAjouterMetierActionPerformed
+       new ajouterMetierFrame().setVisible(true);
+       refreshListMetier();
+    }//GEN-LAST:event_buttonAjouterMetierActionPerformed
+
+    private void buttonSupprimerMetierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSupprimerMetierActionPerformed
+       Metier m = (Metier)listMetier.getSelectedValue();
+        try {
+            MetierDAO.supprimer(mainFrame.cnx, m);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(null, "Suppression réussie");
+        refreshListMetier();
+    }//GEN-LAST:event_buttonSupprimerMetierActionPerformed
+
+    private void buttonAjouterDomaineMetierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAjouterDomaineMetierActionPerformed
+        new ajouterDomaineMetierFrame().setVisible(true);
+    }//GEN-LAST:event_buttonAjouterDomaineMetierActionPerformed
+
+    private void buttonSupprimerDomaineMetierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSupprimerDomaineMetierActionPerformed
+        DomaineMetier dm = (DomaineMetier)listDomaineMetier.getSelectedValue();
+        try {
+            DomaineMetierDAO.supprimer(null, dm);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(null, "La suppression a réussie");
+        refreshListDomaineMetier();
+    }//GEN-LAST:event_buttonSupprimerDomaineMetierActionPerformed
+
+    private void buttonModifierDomaineMetierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModifierDomaineMetierActionPerformed
+        DomaineMetier dm = (DomaineMetier)listDomaineMetier.getSelectedValue();
+        dm.setLibelle(textFieldLibelleDomaineMetier.getText());
+        try {
+            DomaineMetierDAO.modifier(mainFrame.cnx,dm);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(null, "La modification a réussie");
+        refreshListDomaineMetier(listDomaineMetier.getSelectedIndex());
+    }//GEN-LAST:event_buttonModifierDomaineMetierActionPerformed
+
+    private void listDomaineMetierValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listDomaineMetierValueChanged
+        DomaineMetier dm = (DomaineMetier)listDomaineMetier.getSelectedValue();
+        
+        if(dm != null){    
+            //DomaineMetier
+            textFieldLibelleDomaineMetier.setText(dm.getLibelle());
+        }
+    }//GEN-LAST:event_listDomaineMetierValueChanged
+
+    private void refreshListMetier(){
+        refreshListMetier(0);
+    }
+    
+    private void refreshListMetier(int selectedIndex){
+    
+        //Liste métier
+        DefaultListModel listModel = null;
+        
+        if(listMetier.getModel() instanceof DefaultListModel) {
+            listModel = (DefaultListModel) listMetier.getModel();
+            listModel.setSize(0);
+        }else{
+            listModel = new DefaultListModel();
+            listMetier.setModel(listModel);
+        }
+
+        List<Metier> lmetiers = MetierDAO.lister(mainFrame.cnx);
+        
+        for(Metier m : lmetiers){
+           listModel.addElement(m);
+        }
+        
+        if(listModel.getSize() > 0) {
+            listMetier.setSelectedIndex(selectedIndex); 
+        }
+    }
+    
+    private void refreshListDomaineMetier(){
+        refreshListDomaineMetier(0);
+    }
+    
+    private void refreshListDomaineMetier(int selectedIndex){
+        //Liste Domaine Metier
+        DefaultListModel listModelDomaineMetier = null;
+        
+        if(listDomaineMetier.getModel() instanceof DefaultListModel){
+            listModelDomaineMetier = (DefaultListModel) listDomaineMetier.getModel();
+            listModelDomaineMetier.getSize(); 
+        }else{
+            listModelDomaineMetier = new DefaultListModel();
+            listDomaineMetier.setModel(listModelDomaineMetier);
+        }
+        
+        List<DomaineMetier> ldomaineMetier = DomaineMetierDAO.lister(mainFrame.cnx);
+        
+        for(DomaineMetier dm : ldomaineMetier){
+            listModelDomaineMetier.addElement(dm);
+        }
+        
+        if(listModelDomaineMetier.getSize() > 0){
+            listDomaineMetier.setSelectedIndex(selectedIndex);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -78,5 +455,27 @@ public class metierFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAjouterDomaineMetier;
+    private javax.swing.JButton buttonAjouterMetier;
+    private javax.swing.JButton buttonModifierDomaineMetier;
+    private javax.swing.JButton buttonModifierMetier;
+    private javax.swing.JButton buttonSupprimerDomaineMetier;
+    private javax.swing.JButton buttonSupprimerMetier;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelDomaineMetier;
+    private javax.swing.JLabel labelGestionMetier;
+    private javax.swing.JLabel labelLibelleDomaine;
+    private javax.swing.JLabel labelLibelleDomaineMetier;
+    private javax.swing.JLabel labelLibelleMetier;
+    private javax.swing.JLabel labelTitreDomaineMetier;
+    private javax.swing.JLabel labelTitreMetier;
+    private javax.swing.JList listDomaineMetier;
+    private javax.swing.JList listMetier;
+    private javax.swing.JPanel panelDomaineMetier;
+    private javax.swing.JPanel panelMetier;
+    private javax.swing.JPanel panelMetierDomaineMetier;
+    private javax.swing.JTextField textFieldLibelleDomaineMetier;
+    private javax.swing.JTextField textFieldLibelleMetierModifier;
     // End of variables declaration//GEN-END:variables
 }

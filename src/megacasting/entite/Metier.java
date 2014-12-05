@@ -25,6 +25,12 @@ public class Metier {
         this.idDomaineMetier = idDomaineMetier;
     }
 
+    @Override
+    public String toString() {
+        return this.libelle;
+    }
+    
+    
     // Constructeurs
     public Metier(String libelle, int idDomaineMetier) {
         this.libelle = libelle;
