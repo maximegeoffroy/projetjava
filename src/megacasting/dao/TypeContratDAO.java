@@ -81,7 +81,7 @@ public class TypeContratDAO {
         }
     }
     
-    public static void supprimer(Connection connection, TypeContrat contrat){
+    public static void supprimer(Connection connection, TypeContrat contrat) throws Exception{
         
         Statement stmt = null;
        

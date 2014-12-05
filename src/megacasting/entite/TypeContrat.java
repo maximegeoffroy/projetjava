@@ -24,6 +24,13 @@ public class TypeContrat {
     }
     public TypeContrat() {
     }
+
+    @Override
+    public String toString() {
+        return  libelle;
+    }
+    
+    
     
     
 }
