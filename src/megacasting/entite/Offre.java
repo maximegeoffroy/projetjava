@@ -140,6 +140,11 @@ public class Offre {
     }
     public Offre() {
     }
+
+    @Override
+    public String toString() {
+        return this.intitule;
+    }
       
     
     

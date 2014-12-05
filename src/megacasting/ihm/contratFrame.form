@@ -20,17 +20,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="contratPanel" min="-2" max="-2" attributes="0"/>
+          <Component id="panelContrat" alignment="1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="contratPanel" min="-2" max="-2" attributes="0"/>
+          <Component id="panelContrat" alignment="1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="contratPanel">
+    <Container class="javax.swing.JPanel" name="panelContrat">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -39,56 +39,51 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jScrollPane1" max="32767" attributes="0"/>
-                      <Component id="supprimerButton" max="32767" attributes="0"/>
+                      <Component id="buttonSupprimer" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          <Component id="ajouterButton" min="-2" pref="87" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="modifierButton" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="contratLibelleLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="contratLibelleText" min="-2" pref="146" max="-2" attributes="0"/>
-                      </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="labelLibelleModifier" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="textFieldLibelleModifier" min="-2" pref="146" max="-2" attributes="0"/>
+                      <Component id="buttonModifier" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                      <Component id="buttonAjouter" min="-2" pref="190" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <EmptySpace pref="61" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="202" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="contratLibelleLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="contratLibelleText" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="modifierButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ajouterButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
+                  <Component id="jScrollPane1" min="-2" pref="202" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="supprimerButton" pref="51" max="32767" attributes="0"/>
+                  <Component id="buttonSupprimer" pref="101" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="labelLibelleModifier" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldLibelleModifier" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="buttonModifier" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="buttonAjouter" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="supprimerButton">
+        <Component class="javax.swing.JButton" name="buttonSupprimer">
           <Properties>
             <Property name="text" type="java.lang.String" value="Supprimer"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSupprimerActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -97,31 +92,40 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="contratListe">
+            <Component class="javax.swing.JList" name="listeContrat">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="listeContratValueChanged"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="modifierButton">
+        <Component class="javax.swing.JButton" name="buttonModifier">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modifier"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonModifierActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="contratLibelleLabel">
+        <Component class="javax.swing.JButton" name="buttonAjouter">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ajouter un type de contrat"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAjouterActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelLibelleModifier">
           <Properties>
             <Property name="text" type="java.lang.String" value="Contrat "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="contratLibelleText">
-        </Component>
-        <Component class="javax.swing.JButton" name="ajouterButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ajouter"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="textFieldLibelleModifier">
         </Component>
       </SubComponents>
     </Container>
