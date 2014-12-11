@@ -133,11 +133,10 @@ public class ajouterMetierFrame extends javax.swing.JFrame {
         
         try {
             MetierDAO.creer(mainFrame.cnx, m);
+            JOptionPane.showMessageDialog(panelAjouterMetier,"L'ajout a été réussie");
         } catch (Exception ex) {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(panelAjouterMetier, ex.toString());
         }
-        
-        JOptionPane.showMessageDialog(null,"L'ajout a été réussie");
         this.dispose();
     }//GEN-LAST:event_buttonAjouterMetierActionPerformed
 

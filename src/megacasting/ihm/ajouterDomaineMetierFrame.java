@@ -5,8 +5,6 @@
  */
 package megacasting.ihm;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import megacasting.dao.DomaineMetierDAO;
 import megacasting.entite.DomaineMetier;
@@ -113,10 +111,10 @@ public class ajouterDomaineMetierFrame extends javax.swing.JFrame {
         
         try {
             DomaineMetierDAO.creer(mainFrame.cnx, dm);
+            JOptionPane.showMessageDialog(panelAjouterDomaineMetier, "L'ajout a réussie");
         } catch (Exception ex) {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(panelAjouterDomaineMetier, ex.toString());
         }
-        JOptionPane.showMessageDialog(null, "L'ajout a réussie");
         this.dispose();
     }//GEN-LAST:event_buttonAjouterActionPerformed
 

@@ -5,6 +5,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowGainedFocus" listener="java.awt.event.WindowFocusListener" parameters="java.awt.event.WindowEvent" handler="formWindowGainedFocus"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -45,11 +48,20 @@
                   <Component id="labelLibelleModifier" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="textFieldLibelleModifier" min="-2" pref="146" max="-2" attributes="0"/>
-                      <Component id="buttonModifier" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                      <Component id="buttonAjouter" min="-2" pref="190" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="textFieldLibelleModifier" min="-2" pref="146" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="labelError" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="buttonModifier" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="buttonAjouter" min="-2" pref="190" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="51" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="61" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -65,7 +77,10 @@
                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="labelLibelleModifier" min="-2" max="-2" attributes="0"/>
-                      <Component id="textFieldLibelleModifier" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="textFieldLibelleModifier" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelError" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="buttonModifier" min="-2" max="-2" attributes="0"/>
@@ -126,6 +141,13 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textFieldLibelleModifier">
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelError">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

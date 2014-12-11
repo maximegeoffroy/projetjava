@@ -33,4 +33,19 @@ public class Fonctions {
         }
         return null;
     }
+    
+    public enum Error{
+        ErrorTest("Erreur test");
+        
+        private String txt = "";
+
+        public String getTxt() {
+            return txt;
+        }
+        
+        private Error(String txt) {
+            this.txt = txt;
+        }
+ 
+    }
 }

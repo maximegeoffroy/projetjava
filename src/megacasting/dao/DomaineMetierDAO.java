@@ -14,7 +14,7 @@ public class DomaineMetierDAO {
         DomaineMetier dm = trouver(connection,domaineMetier.getLibelle());
         //Test si le domaine metier existe déja
         if(dm != null){
-            throw new Exception("Le domaine metier " + domaineMetier.getLibelle() + "existe déja");
+            throw new Exception("Le domaine metier " + domaineMetier.getLibelle() + " éxiste déja");
         }
         
         Statement stmt = null;
@@ -46,7 +46,7 @@ public class DomaineMetierDAO {
         DomaineMetier dm = trouver(connection,domaineMetier.getLibelle());
         //Test si le domaine metier existe déja
         if(dm != null && dm.getId() != domaineMetier.getId()){
-            throw new Exception("Le domaine metier " + domaineMetier.getLibelle() + "existe déja");
+            throw new Exception("Le domaine metier " + domaineMetier.getLibelle() + " éxiste déja");
         }
         
         Statement stmt = null;
@@ -75,9 +75,9 @@ public class DomaineMetierDAO {
     public static void supprimer(Connection connection, DomaineMetier domaineMetier)throws Exception{
         
         Statement stmt = null;
-        DomaineMetier testDM = trouver(connection,domaineMetier.getLibelle());
+        DomaineMetier dm = trouver(connection,domaineMetier.getLibelle());
         
-        if(testDM == null){
+        if(dm == null){
             throw new Exception("Ce domaine metier n'existe pas, il ne peut pas être supprimée");
         }
        

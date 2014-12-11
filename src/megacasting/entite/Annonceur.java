@@ -11,8 +11,20 @@ public class Annonceur extends Societe {
         this.id = id;
     }
 
-    // Constructeur
+    @Override
+    public String toString() {
+        return this.getRaisonSociale();
+    }
+    
+
+    // Constructeurs
+    public Annonceur(int identifiant) {
+        this.id = identifiant;
+    }
+
     public Annonceur() {
     }
+    
+    
     
 }

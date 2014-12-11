@@ -13,10 +13,10 @@ public class AnnonceurDAO {
     
     public static void creer(Connection connection,Annonceur annonceur) throws Exception{
         
-        Annonceur testO = trouver(connection, annonceur.getId());
+        Annonceur a = trouver(connection, annonceur.getId());
         
-        if (testO != null){
-            throw new Exception("Cet annonceur éxiste déjà !");
+        if (a != null){
+            throw new Exception(annonceur.getRaisonSociale() + " éxiste déjà !");
         }
         
         Statement stmt = null;
@@ -28,7 +28,6 @@ public class AnnonceurDAO {
            
 
            int nb = 0;
-           int id = 0;
            
             stmt = connection.createStatement();            
             
@@ -78,9 +77,9 @@ public class AnnonceurDAO {
     }
     
     public static void modifier(Connection connection, Annonceur annonceur, int id) throws Exception{
-        Annonceur testO = trouver(connection, annonceur.getId());
-        if (testO == null){
-            System.out.println("Cet annonceur n'éxiste pas, il ne peut être modifié");
+        Annonceur a = trouver(connection, annonceur.getId());
+        if (a != null){
+            System.out.println(a.getRaisonSociale() + " éxiste déja");
         }
         Statement stmt = null;
         
@@ -108,11 +107,12 @@ public class AnnonceurDAO {
     
     public static void supprimer (Connection connection, Annonceur annonceur) throws Exception{
         Statement stmt = null;
-        Annonceur testO = trouver(connection, annonceur.getId());
+        Annonceur a = trouver(connection, annonceur.getId());
         
-        if (testO == null){
+        if (a == null){
             throw new Exception("Cet annonceur n'éxiste pas, il ne peut être supprimer");
         }
+        
         try {
             int id = annonceur.getId();
             stmt = connection.createStatement();
@@ -149,7 +149,7 @@ public class AnnonceurDAO {
 
                 int id = rs.getInt("Identifiant");
                 
-                annonceur.setId(rs.getInt("Identifiant"));
+                annonceur.setId(id);
                 
                 liste.add(annonceur);
             }

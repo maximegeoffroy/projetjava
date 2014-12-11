@@ -82,8 +82,13 @@ public class TypeContratDAO {
     }
     
     public static void supprimer(Connection connection, TypeContrat contrat) throws Exception{
-        
-        Statement stmt = null;
+       Statement stmt = null;
+       
+       TypeContrat tc = TypeContratDAO.trouver(connection, contrat.getLibelle());
+       
+       if(tc == null){
+           throw new Exception("Ce type de contrat n'existe pas");
+       }
        
        try{       
            stmt = connection.createStatement();

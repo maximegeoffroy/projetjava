@@ -12,7 +12,17 @@ public class Diffuseur extends Societe {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return this.getRaisonSociale();
+    }
+    
     // Constructeur
+
+    public Diffuseur(int id) {
+        this.id = id;
+    }
+    
     public Diffuseur() {
     }
 }

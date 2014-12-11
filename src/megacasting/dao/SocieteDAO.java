@@ -56,7 +56,7 @@ public class SocieteDAO {
         Societe s = trouver(connection,societe.getRaisonSociale(),societe.getSiret());
         //Test si la societe existe déja
         if(s != null && s.getId() != societe.getId()){
-            throw new Exception("La société '" + societe.getRaisonSociale() + "' avec le numero de siret '" + societe.getSiret() + "' existe déja");
+            throw new Exception("La société " + societe.getRaisonSociale() + " avec le numero de siret " + societe.getSiret() + " éxiste déja");
         }
         
         Statement stmt = null;
@@ -84,8 +84,12 @@ public class SocieteDAO {
         }
     }
     
-    public static void supprimer(Connection connection, Societe societe){
-        
+    public static void supprimer(Connection connection, Societe societe) throws Exception{
+        Societe s = trouver(connection,societe.getRaisonSociale(),societe.getSiret());
+        //Test si la societe existe déja
+        if(s == null){
+            throw new Exception(societe.getRaisonSociale() + " avec le numéro de siret : " + societe.getSiret() + " n'existe pas");
+        }
         Statement stmt = null;
        
        try{       

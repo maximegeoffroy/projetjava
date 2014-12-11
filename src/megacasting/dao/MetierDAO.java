@@ -11,10 +11,10 @@ import megacasting.entite.Metier;
 public class MetierDAO {
     public static void creer(Connection connection,Metier metier) throws Exception{
         
-        Metier testO = trouver(connection, metier.getLibelle());
+        Metier testM = trouver(connection, metier.getLibelle());
         
-        if (testO != null){
-            throw new Exception("Ce métier éxiste déjà !");
+        if (testM != null){
+            throw new Exception(metier.getLibelle() + " éxiste déjà");
         }
         
         Statement stmt = null;
@@ -52,6 +52,7 @@ public class MetierDAO {
             }
         }
     }
+    
     public static Metier trouver(Connection connection, String libelle){
         Metier metier = null;
         Statement stmt = null;
@@ -80,14 +81,19 @@ public class MetierDAO {
             return metier;            
         }
     }
+    
     public static void modifier(Connection connection, Metier metier) throws Exception{
-        Metier testO = trouver(connection, metier.getLibelle());
+        Metier testM = trouver(connection, metier.getLibelle());
+        
+        if(testM != null){
+            throw new Exception(metier.getLibelle() + " existe déja");
+        }
         
         Statement stmt = null;
         
         try {
            
-            // Attributs de la classe Offre
+           // Attributs de la classe Offre
            int identifiant = metier.getId();
            String libelle = metier.getLibelle();
            int idDomaineMetier = metier.getIdDomaineMetier();
@@ -112,11 +118,12 @@ public class MetierDAO {
             }
         }       
     }
+    
     public static void supprimer (Connection connection, Metier metier) throws Exception{
         Statement stmt = null;
-        Metier testO = trouver(connection, metier.getLibelle());
+        Metier testM = trouver(connection, metier.getLibelle());
         
-        if (testO == null){
+        if (testM == null){
             throw new Exception("Ce métier n'éxiste pas, il ne peut être supprimer");
         }
         try {
@@ -139,7 +146,8 @@ public class MetierDAO {
                 }
             }
         }
-    }    
+    }
+    
     public static List<Metier> lister (Connection connection){
         Statement stmt = null;
         List<Metier> liste = new ArrayList<Metier>();

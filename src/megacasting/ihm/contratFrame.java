@@ -8,7 +8,12 @@ package megacasting.ihm;
 
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_OPTION;
+import static megacasting.Fonctions.Error.ErrorTest;
+import megacasting.dao.OffreDAO;
 import megacasting.dao.TypeContratDAO;
+import megacasting.entite.Offre;
 import megacasting.entite.TypeContrat;
 
 
@@ -28,32 +33,7 @@ public class contratFrame extends javax.swing.JFrame {
        
        
     }
-
-    private void refreshList(int selectedIndex){
-        DefaultListModel listModel = null;  
-        
-        if(listeContrat.getModel() instanceof DefaultListModel){
-            listModel = (DefaultListModel) listeContrat.getModel();
-            listModel.setSize(0);
-        }else{
-          listModel = new DefaultListModel(); 
-          listeContrat.setModel(listModel);
-        }
-                
-        List<TypeContrat> ltypeContrats = TypeContratDAO.lister(mainFrame.cnx);
-        for (TypeContrat tc : ltypeContrats)
-        {
-            listModel.addElement(tc);
-        }
-        
-        if(listModel.getSize() > 0){
-            listeContrat.setSelectedIndex(selectedIndex);
-        }
-    }
     
-    private void refreshList(){
-        refreshList(0);
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,6 +51,15 @@ public class contratFrame extends javax.swing.JFrame {
         buttonAjouter = new javax.swing.JButton();
         labelLibelleModifier = new javax.swing.JLabel();
         textFieldLibelleModifier = new javax.swing.JTextField();
+        labelError = new javax.swing.JLabel();
+
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         buttonSupprimer.setText("Supprimer");
         buttonSupprimer.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +91,8 @@ public class contratFrame extends javax.swing.JFrame {
 
         labelLibelleModifier.setText("Contrat ");
 
+        labelError.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout panelContratLayout = new javax.swing.GroupLayout(panelContrat);
         panelContrat.setLayout(panelContratLayout);
         panelContratLayout.setHorizontalGroup(
@@ -115,10 +106,16 @@ public class contratFrame extends javax.swing.JFrame {
                 .addComponent(labelLibelleModifier)
                 .addGap(18, 18, 18)
                 .addGroup(panelContratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textFieldLibelleModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonAjouter, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                    .addGroup(panelContratLayout.createSequentialGroup()
+                        .addComponent(textFieldLibelleModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelContratLayout.createSequentialGroup()
+                        .addGroup(panelContratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonAjouter, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 51, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         panelContratLayout.setVerticalGroup(
             panelContratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +128,9 @@ public class contratFrame extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(panelContratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelLibelleModifier)
-                    .addComponent(textFieldLibelleModifier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelContratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textFieldLibelleModifier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelError, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonModifier)
                 .addGap(45, 45, 45)
@@ -153,6 +152,32 @@ public class contratFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void refreshList(int selectedIndex){
+        DefaultListModel listModel = null;  
+        
+        if(listeContrat.getModel() instanceof DefaultListModel){
+            listModel = (DefaultListModel) listeContrat.getModel();
+            listModel.setSize(0);
+        }else{
+          listModel = new DefaultListModel(); 
+          listeContrat.setModel(listModel);
+        }
+                
+        List<TypeContrat> ltypeContrats = TypeContratDAO.lister(mainFrame.cnx);
+        for (TypeContrat tc : ltypeContrats)
+        {
+            listModel.addElement(tc);
+        }
+        
+        if(listModel.getSize() > 0){
+            listeContrat.setSelectedIndex(selectedIndex);
+        }
+    }
+    
+    private void refreshList(){
+        refreshList(0);
+    }
+    
     private void listeContratValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listeContratValueChanged
         TypeContrat tc = (TypeContrat) listeContrat.getSelectedValue();
         
@@ -164,30 +189,53 @@ public class contratFrame extends javax.swing.JFrame {
 
     private void buttonModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModifierActionPerformed
         TypeContrat tc = (TypeContrat) listeContrat.getSelectedValue();
-        
-        tc.setLibelle(textFieldLibelleModifier.getText());
+        if(textFieldLibelleModifier.getText().isEmpty()){
+            labelError.setText(ErrorTest.getTxt());
+        }else{
+            tc.setLibelle(textFieldLibelleModifier.getText());
         try {
             TypeContratDAO.modifier(mainFrame.cnx, tc);
         } catch (Exception ex){
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(panelContrat, ex.toString());
         }
+        JOptionPane.showMessageDialog(panelContrat, "La modification à réussie");
         refreshList(listeContrat.getSelectedIndex());
+        }
     }//GEN-LAST:event_buttonModifierActionPerformed
 
     private void buttonAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAjouterActionPerformed
         new ajouterTypeContratFrame().setVisible(true);
-        refreshList(listeContrat.getSelectedIndex());
     }//GEN-LAST:event_buttonAjouterActionPerformed
 
     private void buttonSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSupprimerActionPerformed
         TypeContrat tc = (TypeContrat) listeContrat.getSelectedValue();
-        try {
-            TypeContratDAO.supprimer(mainFrame.cnx, tc);
-        } catch (Exception ex){
-            ex.printStackTrace();
+        int retour = JOptionPane.YES_NO_OPTION;
+        JOptionPane.showConfirmDialog(panelContrat, "Êtes vous sur de vouloir supprimer ce contrat et toutes les offres qui y sont associées ?", "Attention", retour);
+        
+        if(retour == YES_OPTION){
+            List<Offre> loffre = OffreDAO.lister(mainFrame.cnx);
+            for(Offre o : loffre){
+                if(o.getIdTypeContrat() == tc.getId()){
+                    try {
+                        OffreDAO.supprimer(mainFrame.cnx, o);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+            try {
+                TypeContratDAO.supprimer(mainFrame.cnx, tc);
+            } catch (Exception ex){
+                JOptionPane.showMessageDialog(panelContrat, ex.toString());
+            }
+            JOptionPane.showMessageDialog(panelContrat, "La suppression à réussie");
+            refreshList(listeContrat.getSelectedIndex());
         }
-        refreshList(listeContrat.getSelectedIndex());
     }//GEN-LAST:event_buttonSupprimerActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        refreshList();
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
@@ -229,6 +277,7 @@ public class contratFrame extends javax.swing.JFrame {
     private javax.swing.JButton buttonModifier;
     private javax.swing.JButton buttonSupprimer;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelError;
     private javax.swing.JLabel labelLibelleModifier;
     private javax.swing.JList listeContrat;
     private javax.swing.JPanel panelContrat;

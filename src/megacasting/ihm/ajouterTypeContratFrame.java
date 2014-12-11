@@ -31,7 +31,7 @@ public class ajouterTypeContratFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelAjouterContrat = new javax.swing.JPanel();
         labelLibelle = new javax.swing.JLabel();
         textFieldLibelle = new javax.swing.JTextField();
         buttonAjouter = new javax.swing.JButton();
@@ -47,24 +47,24 @@ public class ajouterTypeContratFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelAjouterContratLayout = new javax.swing.GroupLayout(panelAjouterContrat);
+        panelAjouterContrat.setLayout(panelAjouterContratLayout);
+        panelAjouterContratLayout.setHorizontalGroup(
+            panelAjouterContratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAjouterContratLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelLibelle, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelAjouterContratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonAjouter)
                     .addComponent(textFieldLibelle, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(106, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelAjouterContratLayout.setVerticalGroup(
+            panelAjouterContratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAjouterContratLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelAjouterContratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textFieldLibelle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelLibelle))
                 .addGap(18, 18, 18)
@@ -76,11 +76,11 @@ public class ajouterTypeContratFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelAjouterContrat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelAjouterContrat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -92,9 +92,9 @@ public class ajouterTypeContratFrame extends javax.swing.JFrame {
             TypeContratDAO.creer(mainFrame.cnx, tc);
             
         } catch (Exception ex){
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(panelAjouterContrat, ex);
         }
-        JOptionPane.showMessageDialog(null, "Contrat Ajouté !");
+        JOptionPane.showMessageDialog(panelAjouterContrat, "Le contrat a été ajouté");
         this.dispose();
         
     }//GEN-LAST:event_buttonAjouterActionPerformed
@@ -136,8 +136,8 @@ public class ajouterTypeContratFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAjouter;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelLibelle;
+    private javax.swing.JPanel panelAjouterContrat;
     private javax.swing.JTextField textFieldLibelle;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,7 +11,7 @@ public class Societe {
 
     @Override
     public String toString() {
-        return this.raisonSociale + " " + this.telephone + " " + this.mail + " " + this.adresse + " " + this.siret;
+        return this.raisonSociale;
     }
 
     // Accesseurs

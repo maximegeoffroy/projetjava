@@ -14,7 +14,7 @@ public class DiffuseurDAO {
         Diffuseur dif = trouver(connection,diffuseur.getId());
         //Test si le diffuseur existe déja
         if(dif != null){
-            throw new Exception("Le diffuseur avec le nom " + diffuseur.getRaisonSociale() + "existe déja");
+            throw new Exception("Le diffuseur " + diffuseur.getRaisonSociale() + " éxiste déja");
         }
         
         Statement stmt = null;
@@ -41,7 +41,7 @@ public class DiffuseurDAO {
         Diffuseur dif = trouver(connection,diffuseur.getId());
         //Test si le diffuseur existe déja
         if(dif != null && dif.getId() != diffuseur.getId()){
-            throw new Exception("Le diffuseur '" + diffuseur.getRaisonSociale() + "' existe déja");
+            throw new Exception("Le diffuseur " + diffuseur.getRaisonSociale() + " éxiste déja");
         }
         
         Statement stmt = null;

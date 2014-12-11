@@ -7,12 +7,9 @@
 package megacasting.ihm;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_OPTION;
 import megacasting.dao.DomaineMetierDAO;
 import megacasting.dao.MetierDAO;
 import megacasting.entite.DomaineMetier;
@@ -20,7 +17,7 @@ import megacasting.entite.Metier;
 
 /**
  *
- * @author ihamel
+ * @author ihamel,mgeoffroy
  */
 public class metierFrame extends javax.swing.JFrame {
 
@@ -65,6 +62,14 @@ public class metierFrame extends javax.swing.JFrame {
         buttonModifierDomaineMetier = new javax.swing.JButton();
         textFieldLibelleDomaineMetier = new javax.swing.JTextField();
         buttonAjouterDomaineMetier = new javax.swing.JButton();
+
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         panelMetier.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -254,10 +259,10 @@ public class metierFrame extends javax.swing.JFrame {
             panelMetierDomaineMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMetierDomaineMetierLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelMetierDomaineMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(panelDomaineMetier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelMetierDomaineMetierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelMetier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelGestionMetier, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(panelDomaineMetier, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelGestionMetier))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         panelMetierDomaineMetierLayout.setVerticalGroup(
@@ -306,15 +311,14 @@ public class metierFrame extends javax.swing.JFrame {
         try {
             MetierDAO.modifier(mainFrame.cnx, m);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(panelMetier, ex.toString());
         }
-        JOptionPane.showMessageDialog(null, "Modification réussie");
+        JOptionPane.showMessageDialog(panelMetier, "la modification réussie");
         refreshListMetier(listMetier.getSelectedIndex());
     }//GEN-LAST:event_buttonModifierMetierActionPerformed
 
     private void buttonAjouterMetierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAjouterMetierActionPerformed
        new ajouterMetierFrame().setVisible(true);
-       refreshListMetier();
     }//GEN-LAST:event_buttonAjouterMetierActionPerformed
 
     private void buttonSupprimerMetierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSupprimerMetierActionPerformed
@@ -322,9 +326,9 @@ public class metierFrame extends javax.swing.JFrame {
         try {
             MetierDAO.supprimer(mainFrame.cnx, m);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(panelMetier, ex.toString());
         }
-        JOptionPane.showMessageDialog(null, "Suppression réussie");
+        JOptionPane.showMessageDialog(panelMetier, "Suppression réussie");
         refreshListMetier();
     }//GEN-LAST:event_buttonSupprimerMetierActionPerformed
 
@@ -334,13 +338,27 @@ public class metierFrame extends javax.swing.JFrame {
 
     private void buttonSupprimerDomaineMetierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSupprimerDomaineMetierActionPerformed
         DomaineMetier dm = (DomaineMetier)listDomaineMetier.getSelectedValue();
-        try {
-            DomaineMetierDAO.supprimer(null, dm);
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        int retour = JOptionPane.YES_NO_OPTION;
+        JOptionPane.showConfirmDialog(panelDomaineMetier, "Êtes vous sur de vouloir surpprimer ce domaine métier et les métiers qui y sont associés ?","Warning", retour);
+        if(retour == YES_OPTION){
+            List<Metier> lmetier = MetierDAO.lister(mainFrame.cnx);
+            for(Metier m : lmetier){
+                if(m.getIdDomaineMetier() == dm.getId()){
+                    try {
+                        MetierDAO.supprimer(mainFrame.cnx, m);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+            try {
+                DomaineMetierDAO.supprimer(mainFrame.cnx, dm);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(panelDomaineMetier, ex);
+            }
+            JOptionPane.showMessageDialog(panelDomaineMetier, "La suppression a réussie");
+            refreshListDomaineMetier();
         }
-        JOptionPane.showMessageDialog(null, "La suppression a réussie");
-        refreshListDomaineMetier();
     }//GEN-LAST:event_buttonSupprimerDomaineMetierActionPerformed
 
     private void buttonModifierDomaineMetierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModifierDomaineMetierActionPerformed
@@ -349,9 +367,9 @@ public class metierFrame extends javax.swing.JFrame {
         try {
             DomaineMetierDAO.modifier(mainFrame.cnx,dm);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(panelDomaineMetier, ex.toString());
         }
-        JOptionPane.showMessageDialog(null, "La modification a réussie");
+        JOptionPane.showMessageDialog(panelDomaineMetier, "La modification a réussie");
         refreshListDomaineMetier(listDomaineMetier.getSelectedIndex());
     }//GEN-LAST:event_buttonModifierDomaineMetierActionPerformed
 
@@ -363,6 +381,11 @@ public class metierFrame extends javax.swing.JFrame {
             textFieldLibelleDomaineMetier.setText(dm.getLibelle());
         }
     }//GEN-LAST:event_listDomaineMetierValueChanged
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        refreshListMetier();
+        refreshListDomaineMetier();
+    }//GEN-LAST:event_formWindowGainedFocus
 
     private void refreshListMetier(){
         refreshListMetier(0);
@@ -402,7 +425,7 @@ public class metierFrame extends javax.swing.JFrame {
         
         if(listDomaineMetier.getModel() instanceof DefaultListModel){
             listModelDomaineMetier = (DefaultListModel) listDomaineMetier.getModel();
-            listModelDomaineMetier.getSize(); 
+            listModelDomaineMetier.setSize(0); 
         }else{
             listModelDomaineMetier = new DefaultListModel();
             listDomaineMetier.setModel(listModelDomaineMetier);
