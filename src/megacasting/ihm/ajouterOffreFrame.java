@@ -3,12 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package megacasting.ihm;
 
+import java.util.Date;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import megacasting.dao.AnnonceurDAO;
+import megacasting.dao.DomaineMetierDAO;
+import megacasting.dao.MetierDAO;
 import megacasting.dao.OffreDAO;
+import megacasting.dao.SocieteDAO;
+import megacasting.dao.TypeContratDAO;
+import megacasting.entite.Annonceur;
+import megacasting.entite.DomaineMetier;
+import megacasting.entite.Metier;
 import megacasting.entite.Offre;
+import megacasting.entite.Societe;
+import megacasting.entite.TypeContrat;
 
 /**
  *
@@ -21,6 +33,7 @@ public class ajouterOffreFrame extends javax.swing.JFrame {
      */
     public ajouterOffreFrame() {
         initComponents();
+        refreshComboBox();
     }
 
     /**
@@ -32,87 +45,84 @@ public class ajouterOffreFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        labelIntitule2 = new javax.swing.JLabel();
-        labelReference2 = new javax.swing.JLabel();
-        labelDatePublication2 = new javax.swing.JLabel();
-        labelDureeDiffusion2 = new javax.swing.JLabel();
-        labelDateDebutContrat2 = new javax.swing.JLabel();
-        labelNbPoste2 = new javax.swing.JLabel();
-        labelLocalisation2 = new javax.swing.JLabel();
-        labelDescriptionPoste2 = new javax.swing.JLabel();
-        labelDescriptionProfil2 = new javax.swing.JLabel();
-        labelTelephone2 = new javax.swing.JLabel();
-        labelEmail2 = new javax.swing.JLabel();
-        labelTypeContrat2 = new javax.swing.JLabel();
-        labelMetier2 = new javax.swing.JLabel();
-        labelDomaineMetier2 = new javax.swing.JLabel();
-        labelAnnonceur2 = new javax.swing.JLabel();
-        textFieldIntitule2 = new javax.swing.JTextField();
-        textFieldReference2 = new javax.swing.JTextField();
-        textFieldLocalisation2 = new javax.swing.JTextField();
-        textFieldEmail2 = new javax.swing.JTextField();
-        textFieldTelephone2 = new javax.swing.JTextField();
-        textFieldTypeContrat2 = new javax.swing.JTextField();
-        textFieldMetier2 = new javax.swing.JTextField();
-        textFieldDomaineMetier2 = new javax.swing.JTextField();
-        textFieldAnnonceur2 = new javax.swing.JTextField();
-        comboBoxNombrePoste2 = new javax.swing.JComboBox();
-        comboBoxDateDebutContratMois2 = new javax.swing.JComboBox();
-        comboBoxDateDebutContratJour2 = new javax.swing.JComboBox();
-        comboBoxDateDebutContratAn2 = new javax.swing.JComboBox();
-        comboBoxDatePublicationJour2 = new javax.swing.JComboBox();
-        comboBoxDatePublicationMois2 = new javax.swing.JComboBox();
-        comboboxDatePublicationAn2 = new javax.swing.JComboBox();
-        labelJour2 = new javax.swing.JLabel();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        textAreaDescriptionPoste2 = new javax.swing.JTextArea();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        textAreaDescriptionProfil2 = new javax.swing.JTextArea();
-        spinnerDureeDiffusion2 = new javax.swing.JSpinner();
+        panelAjoutOffre = new javax.swing.JPanel();
+        labelIntitule = new javax.swing.JLabel();
+        labelReference = new javax.swing.JLabel();
+        labelDatePublication = new javax.swing.JLabel();
+        labelDureeDiffusion = new javax.swing.JLabel();
+        labelDateDebutContrat = new javax.swing.JLabel();
+        labelNbPoste = new javax.swing.JLabel();
+        labelLocalisation = new javax.swing.JLabel();
+        labelDescriptionPoste = new javax.swing.JLabel();
+        labelDescriptionProfil = new javax.swing.JLabel();
+        labelTelephone = new javax.swing.JLabel();
+        labelEmail = new javax.swing.JLabel();
+        labelTypeContrat = new javax.swing.JLabel();
+        labelMetier = new javax.swing.JLabel();
+        labelDomaineMetier = new javax.swing.JLabel();
+        labelAnnonceur = new javax.swing.JLabel();
+        textFieldIntitule = new javax.swing.JTextField();
+        textFieldReference = new javax.swing.JTextField();
+        textFieldLocalisation = new javax.swing.JTextField();
+        textFieldEmail = new javax.swing.JTextField();
+        textFieldTelephone = new javax.swing.JTextField();
+        comboBoxNombrePoste = new javax.swing.JComboBox();
+        labelJour = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textAreaDescriptionPoste = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        textAreaDescriptionProfil = new javax.swing.JTextArea();
+        spinnerDureeDiffusion = new javax.swing.JSpinner();
         buttonAjouterOffre = new javax.swing.JButton();
+        comboBoxMetier = new javax.swing.JComboBox();
+        comboBoxTypeContrat = new javax.swing.JComboBox();
+        comboBoxAnnonceur = new javax.swing.JComboBox();
+        comboBoxDomaineMetier = new javax.swing.JComboBox();
+        dateChooserPublication = new com.toedter.calendar.JDateChooser();
+        dateChooserDebutContrat = new com.toedter.calendar.JDateChooser();
+        labelAjouterOffre = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        panelAjoutOffre.setBackground(new java.awt.Color(153, 153, 153));
 
-        labelIntitule2.setText("Intitule");
+        labelIntitule.setText("Intitule");
 
-        labelReference2.setText("Référence");
+        labelReference.setText("Référence");
 
-        labelDatePublication2.setText("Date de publication");
+        labelDatePublication.setText("Date de publication");
 
-        labelDureeDiffusion2.setText("Durée de diffusion");
+        labelDureeDiffusion.setText("Durée de diffusion");
 
-        labelDateDebutContrat2.setText("Date du début du contrat");
+        labelDateDebutContrat.setText("Date du début du contrat");
 
-        labelNbPoste2.setText("Nombre de poste");
+        labelNbPoste.setText("Nombre de poste");
 
-        labelLocalisation2.setText("Localisation");
+        labelLocalisation.setText("Localisation");
 
-        labelDescriptionPoste2.setText("Description du poste");
+        labelDescriptionPoste.setText("Description du poste");
 
-        labelDescriptionProfil2.setText("Description du profil");
+        labelDescriptionProfil.setText("Description du profil");
 
-        labelTelephone2.setText("Numéro de téléphone");
+        labelTelephone.setText("Numéro de téléphone");
 
-        labelEmail2.setText("Email");
+        labelEmail.setText("Email");
 
-        labelTypeContrat2.setText("Type de contrat");
+        labelTypeContrat.setText("Type de contrat");
 
-        labelMetier2.setText("Métier");
+        labelMetier.setText("Métier");
 
-        labelDomaineMetier2.setText("Domaine de métier");
+        labelDomaineMetier.setText("Domaine de métier");
 
-        labelAnnonceur2.setText("Annonceur");
+        labelAnnonceur.setText("Annonceur");
 
-        labelJour2.setText("Jour(s)");
+        labelJour.setText("Jour(s)");
 
-        textAreaDescriptionPoste2.setColumns(20);
-        textAreaDescriptionPoste2.setRows(5);
-        jScrollPane8.setViewportView(textAreaDescriptionPoste2);
+        textAreaDescriptionPoste.setColumns(20);
+        textAreaDescriptionPoste.setRows(5);
+        jScrollPane1.setViewportView(textAreaDescriptionPoste);
 
-        textAreaDescriptionProfil2.setColumns(20);
-        textAreaDescriptionProfil2.setRows(5);
-        jScrollPane9.setViewportView(textAreaDescriptionProfil2);
+        textAreaDescriptionProfil.setColumns(20);
+        textAreaDescriptionProfil.setRows(5);
+        jScrollPane2.setViewportView(textAreaDescriptionProfil);
 
         buttonAjouterOffre.setText("Ajouter");
         buttonAjouterOffre.addActionListener(new java.awt.event.ActionListener() {
@@ -121,182 +131,271 @@ public class ajouterOffreFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelIntitule2)
-                    .addComponent(labelAnnonceur2)
-                    .addComponent(labelDomaineMetier2)
-                    .addComponent(labelReference2)
-                    .addComponent(labelDatePublication2)
-                    .addComponent(labelDureeDiffusion2)
-                    .addComponent(labelDateDebutContrat2)
-                    .addComponent(labelNbPoste2)
-                    .addComponent(labelLocalisation2)
-                    .addComponent(labelDescriptionPoste2)
-                    .addComponent(labelDescriptionProfil2)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(labelMetier2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelTelephone2, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(labelEmail2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelTypeContrat2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textFieldReference2)
-                    .addComponent(textFieldIntitule2)
-                    .addComponent(textFieldDomaineMetier2)
-                    .addComponent(textFieldMetier2)
-                    .addComponent(textFieldTypeContrat2)
-                    .addComponent(textFieldLocalisation2)
-                    .addComponent(jScrollPane8)
-                    .addComponent(jScrollPane9)
-                    .addComponent(textFieldTelephone2)
-                    .addComponent(textFieldEmail2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonAjouterOffre)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(comboBoxDateDebutContratJour2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboBoxDateDebutContratMois2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(comboBoxDateDebutContratAn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(comboBoxDatePublicationJour2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboBoxDatePublicationMois2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboboxDatePublicationAn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(comboBoxNombrePoste2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textFieldAnnonceur2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(spinnerDureeDiffusion2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelJour2)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+        comboBoxDomaineMetier.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout panelAjoutOffreLayout = new javax.swing.GroupLayout(panelAjoutOffre);
+        panelAjoutOffre.setLayout(panelAjoutOffreLayout);
+        panelAjoutOffreLayout.setHorizontalGroup(
+            panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAjoutOffreLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelAjoutOffreLayout.createSequentialGroup()
+                        .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelTelephone)
+                            .addComponent(labelDescriptionProfil)
+                            .addComponent(labelDescriptionPoste)
+                            .addComponent(labelLocalisation)
+                            .addComponent(labelNbPoste)
+                            .addComponent(labelDateDebutContrat)
+                            .addComponent(labelDureeDiffusion)
+                            .addComponent(labelDatePublication)
+                            .addComponent(labelReference)
+                            .addComponent(labelIntitule))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelAjoutOffreLayout.createSequentialGroup()
+                                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1)
+                                    .addComponent(textFieldLocalisation)
+                                    .addComponent(textFieldIntitule)
+                                    .addComponent(textFieldReference, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(panelAjoutOffreLayout.createSequentialGroup()
+                                        .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textFieldTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(dateChooserPublication, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
+                            .addGroup(panelAjoutOffreLayout.createSequentialGroup()
+                                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(buttonAjouterOffre)
+                                    .addComponent(comboBoxNombrePoste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panelAjoutOffreLayout.createSequentialGroup()
+                                        .addComponent(spinnerDureeDiffusion, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(labelJour))
+                                    .addComponent(comboBoxAnnonceur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dateChooserDebutContrat, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(panelAjoutOffreLayout.createSequentialGroup()
+                        .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelDomaineMetier)
+                            .addComponent(labelAnnonceur)
+                            .addGroup(panelAjoutOffreLayout.createSequentialGroup()
+                                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelTypeContrat))
+                                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelAjoutOffreLayout.createSequentialGroup()
+                                        .addGap(49, 49, 49)
+                                        .addComponent(textFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelAjoutOffreLayout.createSequentialGroup()
+                                        .addGap(48, 48, 48)
+                                        .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(comboBoxMetier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(comboBoxTypeContrat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(comboBoxDomaineMetier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(labelMetier, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelIntitule2)
-                    .addComponent(textFieldIntitule2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelReference2)
-                    .addComponent(textFieldReference2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        panelAjoutOffreLayout.setVerticalGroup(
+            panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAjoutOffreLayout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelIntitule)
+                    .addComponent(textFieldIntitule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelDatePublication2)
-                    .addComponent(comboBoxDatePublicationJour2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxDatePublicationMois2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboboxDatePublicationAn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelReference)
+                    .addComponent(textFieldReference, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelDureeDiffusion2)
-                    .addComponent(labelJour2)
-                    .addComponent(spinnerDureeDiffusion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelDatePublication)
+                    .addComponent(dateChooserPublication, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelDateDebutContrat2)
-                    .addComponent(comboBoxDateDebutContratMois2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxDateDebutContratJour2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxDateDebutContratAn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDureeDiffusion)
+                    .addComponent(labelJour)
+                    .addComponent(spinnerDureeDiffusion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelNbPoste2)
-                    .addComponent(comboBoxNombrePoste2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelDateDebutContrat)
+                    .addComponent(dateChooserDebutContrat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelLocalisation2)
-                    .addComponent(textFieldLocalisation2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNbPoste)
+                    .addComponent(comboBoxNombrePoste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelDescriptionPoste2))
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelLocalisation)
+                    .addComponent(textFieldLocalisation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelDescriptionProfil2))
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDescriptionPoste))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDescriptionProfil))
                 .addGap(6, 6, 6)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textFieldTelephone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelTelephone2))
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFieldTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTelephone))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldEmail2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelEmail2))
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelEmail)
+                    .addComponent(textFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTypeContrat)
+                    .addComponent(comboBoxTypeContrat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldTypeContrat2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelTypeContrat2))
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboBoxMetier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelMetier))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldMetier2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelMetier2))
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDomaineMetier)
+                    .addComponent(comboBoxDomaineMetier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textFieldDomaineMetier2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelDomaineMetier2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldAnnonceur2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelAnnonceur2))
+                .addGroup(panelAjoutOffreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelAnnonceur)
+                    .addComponent(comboBoxAnnonceur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(buttonAjouterOffre)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
+
+        labelAjouterOffre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelAjouterOffre.setText("Ajouter une offre");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(panelAjoutOffre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelAjouterOffre, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(labelAjouterOffre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelAjoutOffre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAjouterOffreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAjouterOffreActionPerformed
-        Offre o = (Offre) listeOffre.getSelectedValue();
-        
+        Offre o = new Offre();
+
         o.setIntitule(textFieldIntitule.getText());
         o.setReference(textFieldReference.getText());
-        // Date public 
-        o.setDureeDiffusion((int)spinnerDureeDiffusion.getValue());
-        // Date Debut
-        o.setNbPostes((int)comboBoxNombrePoste.getSelectedItem());
+        // Date publication
+        Date publication = dateChooserPublication.getDate();
+        o.setDatePublication(publication);
+        o.setDureeDiffusion((int) spinnerDureeDiffusion.getValue());
+        // Date Debut Contrat
+        Date debutContrat = dateChooserDebutContrat.getDate();
+        o.setDateDebutContrat(debutContrat);
+        o.setNbPostes((int) comboBoxNombrePoste.getSelectedItem());
         o.setLocalisation(textFieldLocalisation.getText());
         o.setDescriptionPoste(textAreaDescriptionPoste.getText());
         o.setDescriptionProfil(textAreaDescriptionPoste.getText());
         o.setTelephone(textFieldTelephone.getText());
         o.setMail(textFieldEmail.getText());
-        // TypeContrat
+        // Type Contrat
+        String libelleTempTC = (String) comboBoxTypeContrat.getSelectedItem();
+        TypeContrat tc = TypeContratDAO.trouver(mainFrame.cnx, libelleTempTC);
+        if(tc != null){
+            o.setIdTypeContrat(tc.getId());
+        }
+
         // Metier
-        // Domaine Metier
-        // annonceur
-        
+        String libelleTempM = (String) comboBoxMetier.getSelectedItem();
+        Metier m = MetierDAO.trouver(mainFrame.cnx, libelleTempM);
+        if(m != null){
+            o.setIdMetier(m.getId());
+        }
+        // Domaine metier
+        String libelleTempDM = (String) comboBoxDomaineMetier.getSelectedItem();
+        DomaineMetier dm = DomaineMetierDAO.trouver(mainFrame.cnx, libelleTempDM);
+        if(dm != null){
+            o.setIdDomaineMetier(dm.getId());
+        }
+
+        // Annonceur
+        String libelleTempA = (String) comboBoxAnnonceur.getSelectedItem();
+        Societe s = SocieteDAO.trouver(mainFrame.cnx,libelleTempA);
+        if(s != null){
+            Annonceur a = AnnonceurDAO.trouver(mainFrame.cnx, s.getId());
+            if(a != null){
+                o.setIdAnnonceur(a.getId());
+            }
+        }
+
         try {
             OffreDAO.creer(mainFrame.cnx, o);
-        } catch (Exception ex){
-            ex.printStackTrace();
-        }     
-        JOptionPane.showMessageDialog(null, "Offre Ajoutée !");
-        this.dispose();
+            JOptionPane.showMessageDialog(panelAjoutOffre, "L'offre a bien été ajoutée ");
+            this.dispose();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(panelAjoutOffre, ex.toString());
+        }
     }//GEN-LAST:event_buttonAjouterOffreActionPerformed
+
+    private void refreshComboBox() {
+
+        // Nombre de postes
+        DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
+        for (int i = 1; i < 11; i++) {
+            comboBoxModel.addElement(i);
+        }
+        comboBoxNombrePoste.setModel(comboBoxModel);
+
+        // TypeContrat
+        DefaultComboBoxModel comboBoxModelTypeContrat = new DefaultComboBoxModel();
+        List<TypeContrat> lTypeContrat = TypeContratDAO.lister(mainFrame.cnx);
+        for (TypeContrat tc : lTypeContrat) {
+            comboBoxModelTypeContrat.addElement(tc.getLibelle());
+        }
+        comboBoxTypeContrat.setModel(comboBoxModelTypeContrat);
+
+        // Metier
+        DefaultComboBoxModel comboBoxModelMetier = new DefaultComboBoxModel();
+        List<Metier> lMetier = MetierDAO.lister(mainFrame.cnx);
+        for (Metier m : lMetier) {
+            comboBoxModelMetier.addElement(m.getLibelle());
+        }
+        comboBoxMetier.setModel(comboBoxModelMetier);
+
+        // Domaine Metier
+        DefaultComboBoxModel comboBoxModelDomaineMetier = new DefaultComboBoxModel();
+        List<DomaineMetier> lDomaineMetier = DomaineMetierDAO.lister(mainFrame.cnx);
+        for (DomaineMetier dm : lDomaineMetier) {
+            comboBoxModelDomaineMetier.addElement(dm.getLibelle());
+        }
+        comboBoxDomaineMetier.setModel(comboBoxModelDomaineMetier);
+
+        // Annonceur
+        DefaultComboBoxModel comboBoxModelAnnonceur = new DefaultComboBoxModel();
+        List<Annonceur> lAnnonceur = AnnonceurDAO.lister(mainFrame.cnx);
+        for (Annonceur a : lAnnonceur) {
+            Societe s = SocieteDAO.trouver(mainFrame.cnx, a.getId());
+            comboBoxModelAnnonceur.addElement(s.getRaisonSociale());
+        }
+        comboBoxAnnonceur.setModel(comboBoxModelAnnonceur);
+    }
 
     /**
      * @param args the command line arguments
@@ -324,6 +423,7 @@ public class ajouterOffreFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ajouterOffreFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -334,130 +434,41 @@ public class ajouterOffreFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonAjouter;
-    private javax.swing.JButton buttonAjouter1;
     private javax.swing.JButton buttonAjouterOffre;
-    private javax.swing.JButton buttonModifier;
-    private javax.swing.JButton buttonModifier1;
-    private javax.swing.JButton buttonSupprimer;
-    private javax.swing.JButton buttonSupprimer1;
-    private javax.swing.JComboBox comboBoxDateDebutContratAn;
-    private javax.swing.JComboBox comboBoxDateDebutContratAn1;
-    private javax.swing.JComboBox comboBoxDateDebutContratAn2;
-    private javax.swing.JComboBox comboBoxDateDebutContratJour;
-    private javax.swing.JComboBox comboBoxDateDebutContratJour1;
-    private javax.swing.JComboBox comboBoxDateDebutContratJour2;
-    private javax.swing.JComboBox comboBoxDateDebutContratMois;
-    private javax.swing.JComboBox comboBoxDateDebutContratMois1;
-    private javax.swing.JComboBox comboBoxDateDebutContratMois2;
-    private javax.swing.JComboBox comboBoxDatePublicationJour;
-    private javax.swing.JComboBox comboBoxDatePublicationJour1;
-    private javax.swing.JComboBox comboBoxDatePublicationJour2;
-    private javax.swing.JComboBox comboBoxDatePublicationMois;
-    private javax.swing.JComboBox comboBoxDatePublicationMois1;
-    private javax.swing.JComboBox comboBoxDatePublicationMois2;
+    private javax.swing.JComboBox comboBoxAnnonceur;
+    private javax.swing.JComboBox comboBoxDomaineMetier;
+    private javax.swing.JComboBox comboBoxMetier;
     private javax.swing.JComboBox comboBoxNombrePoste;
-    private javax.swing.JComboBox comboBoxNombrePoste1;
-    private javax.swing.JComboBox comboBoxNombrePoste2;
-    private javax.swing.JComboBox comboboxDatePublicationAn;
-    private javax.swing.JComboBox comboboxDatePublicationAn1;
-    private javax.swing.JComboBox comboboxDatePublicationAn2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JComboBox comboBoxTypeContrat;
+    private com.toedter.calendar.JDateChooser dateChooserDebutContrat;
+    private com.toedter.calendar.JDateChooser dateChooserPublication;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JLabel labelAjouterOffre;
     private javax.swing.JLabel labelAnnonceur;
-    private javax.swing.JLabel labelAnnonceur1;
-    private javax.swing.JLabel labelAnnonceur2;
     private javax.swing.JLabel labelDateDebutContrat;
-    private javax.swing.JLabel labelDateDebutContrat1;
-    private javax.swing.JLabel labelDateDebutContrat2;
     private javax.swing.JLabel labelDatePublication;
-    private javax.swing.JLabel labelDatePublication1;
-    private javax.swing.JLabel labelDatePublication2;
     private javax.swing.JLabel labelDescriptionPoste;
-    private javax.swing.JLabel labelDescriptionPoste1;
-    private javax.swing.JLabel labelDescriptionPoste2;
     private javax.swing.JLabel labelDescriptionProfil;
-    private javax.swing.JLabel labelDescriptionProfil1;
-    private javax.swing.JLabel labelDescriptionProfil2;
     private javax.swing.JLabel labelDomaineMetier;
-    private javax.swing.JLabel labelDomaineMetier1;
-    private javax.swing.JLabel labelDomaineMetier2;
     private javax.swing.JLabel labelDureeDiffusion;
-    private javax.swing.JLabel labelDureeDiffusion1;
-    private javax.swing.JLabel labelDureeDiffusion2;
     private javax.swing.JLabel labelEmail;
-    private javax.swing.JLabel labelEmail1;
-    private javax.swing.JLabel labelEmail2;
     private javax.swing.JLabel labelIntitule;
-    private javax.swing.JLabel labelIntitule1;
-    private javax.swing.JLabel labelIntitule2;
     private javax.swing.JLabel labelJour;
-    private javax.swing.JLabel labelJour1;
-    private javax.swing.JLabel labelJour2;
     private javax.swing.JLabel labelLocalisation;
-    private javax.swing.JLabel labelLocalisation1;
-    private javax.swing.JLabel labelLocalisation2;
     private javax.swing.JLabel labelMetier;
-    private javax.swing.JLabel labelMetier1;
-    private javax.swing.JLabel labelMetier2;
     private javax.swing.JLabel labelNbPoste;
-    private javax.swing.JLabel labelNbPoste1;
-    private javax.swing.JLabel labelNbPoste2;
     private javax.swing.JLabel labelReference;
-    private javax.swing.JLabel labelReference1;
-    private javax.swing.JLabel labelReference2;
     private javax.swing.JLabel labelTelephone;
-    private javax.swing.JLabel labelTelephone1;
-    private javax.swing.JLabel labelTelephone2;
     private javax.swing.JLabel labelTypeContrat;
-    private javax.swing.JLabel labelTypeContrat1;
-    private javax.swing.JLabel labelTypeContrat2;
-    private javax.swing.JList listeOffre;
-    private javax.swing.JList listeOffre1;
+    private javax.swing.JPanel panelAjoutOffre;
     private javax.swing.JSpinner spinnerDureeDiffusion;
-    private javax.swing.JSpinner spinnerDureeDiffusion1;
-    private javax.swing.JSpinner spinnerDureeDiffusion2;
     private javax.swing.JTextArea textAreaDescriptionPoste;
-    private javax.swing.JTextArea textAreaDescriptionPoste1;
-    private javax.swing.JTextArea textAreaDescriptionPoste2;
     private javax.swing.JTextArea textAreaDescriptionProfil;
-    private javax.swing.JTextArea textAreaDescriptionProfil1;
-    private javax.swing.JTextArea textAreaDescriptionProfil2;
-    private javax.swing.JTextField textFieldAnnonceur;
-    private javax.swing.JTextField textFieldAnnonceur1;
-    private javax.swing.JTextField textFieldAnnonceur2;
-    private javax.swing.JTextField textFieldDomaineMetier;
-    private javax.swing.JTextField textFieldDomaineMetier1;
-    private javax.swing.JTextField textFieldDomaineMetier2;
     private javax.swing.JTextField textFieldEmail;
-    private javax.swing.JTextField textFieldEmail1;
-    private javax.swing.JTextField textFieldEmail2;
     private javax.swing.JTextField textFieldIntitule;
-    private javax.swing.JTextField textFieldIntitule1;
-    private javax.swing.JTextField textFieldIntitule2;
     private javax.swing.JTextField textFieldLocalisation;
-    private javax.swing.JTextField textFieldLocalisation1;
-    private javax.swing.JTextField textFieldLocalisation2;
-    private javax.swing.JTextField textFieldMetier;
-    private javax.swing.JTextField textFieldMetier1;
-    private javax.swing.JTextField textFieldMetier2;
     private javax.swing.JTextField textFieldReference;
-    private javax.swing.JTextField textFieldReference1;
-    private javax.swing.JTextField textFieldReference2;
     private javax.swing.JTextField textFieldTelephone;
-    private javax.swing.JTextField textFieldTelephone1;
-    private javax.swing.JTextField textFieldTelephone2;
-    private javax.swing.JTextField textFieldTypeContrat;
-    private javax.swing.JTextField textFieldTypeContrat1;
-    private javax.swing.JTextField textFieldTypeContrat2;
     // End of variables declaration//GEN-END:variables
 }

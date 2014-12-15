@@ -5,6 +5,10 @@
  */
 package megacasting.ihm;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import megacasting.dao.AnnonceurDAO;
 import megacasting.dao.SocieteDAO;
@@ -46,6 +50,11 @@ public class ajouterAnnonceurFrame extends javax.swing.JFrame {
         textFieldEmail = new javax.swing.JTextField();
         textFieldAdresse = new javax.swing.JTextField();
         textFieldSiret = new javax.swing.JTextField();
+        labelErreurRaisonSociale = new javax.swing.JLabel();
+        labelErreurTelephone = new javax.swing.JLabel();
+        labelErreurEmail = new javax.swing.JLabel();
+        labelErreurAdresse = new javax.swing.JLabel();
+        labelErreurSiret = new javax.swing.JLabel();
         labelAjouterAnnonceur = new javax.swing.JLabel();
 
         panelAnnonceur.setBackground(new java.awt.Color(153, 153, 153));
@@ -67,6 +76,16 @@ public class ajouterAnnonceurFrame extends javax.swing.JFrame {
 
         labelSiret.setText("Siret");
 
+        labelErreurRaisonSociale.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurTelephone.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurEmail.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurAdresse.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurSiret.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout panelAnnonceurLayout = new javax.swing.GroupLayout(panelAnnonceur);
         panelAnnonceur.setLayout(panelAnnonceurLayout);
         panelAnnonceurLayout.setHorizontalGroup(
@@ -76,8 +95,9 @@ public class ajouterAnnonceurFrame extends javax.swing.JFrame {
                 .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelAnnonceurLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(buttonAjouterAnnonceur))
-                    .addGroup(panelAnnonceurLayout.createSequentialGroup()
+                        .addComponent(buttonAjouterAnnonceur)
+                        .addGap(105, 105, 105))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelAnnonceurLayout.createSequentialGroup()
                         .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelRaisonSociale)
                             .addComponent(labelTelephone)
@@ -86,13 +106,22 @@ public class ajouterAnnonceurFrame extends javax.swing.JFrame {
                             .addComponent(labelSiret))
                         .addGap(18, 18, 18)
                         .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textFieldSiret)
-                            .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(textFieldTelephone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                                .addComponent(textFieldEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(textFieldRaisonSociale, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(textFieldAdresse))))
-                .addGap(131, 131, 131))
+                            .addComponent(labelErreurRaisonSociale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelErreurTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panelAnnonceurLayout.createSequentialGroup()
+                                .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(labelErreurSiret)
+                                        .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(textFieldRaisonSociale, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textFieldEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(textFieldTelephone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(textFieldAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelErreurEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(labelErreurAdresse, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
+                                    .addComponent(textFieldSiret, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(26, 26, 26))
         );
         panelAnnonceurLayout.setVerticalGroup(
             panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,25 +130,35 @@ public class ajouterAnnonceurFrame extends javax.swing.JFrame {
                 .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelRaisonSociale)
                     .addComponent(textFieldRaisonSociale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelErreurRaisonSociale)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelTelephone)
                     .addComponent(textFieldTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelErreurTelephone)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelEmail)
                     .addComponent(textFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelErreurEmail)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAdresse)
                     .addComponent(textFieldAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelErreurAdresse)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelSiret)
                     .addComponent(textFieldSiret, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelErreurSiret)
+                .addGap(4, 4, 4)
                 .addComponent(buttonAjouterAnnonceur)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         labelAjouterAnnonceur.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -152,24 +191,101 @@ public class ajouterAnnonceurFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAjouterAnnonceurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAjouterAnnonceurActionPerformed
-        Societe s = new Societe();
-        s.setRaisonSociale(textFieldRaisonSociale.getText());
-        s.setTelephone(textFieldTelephone.getText());
-        s.setMail(textFieldEmail.getText());
-        s.setAdresse(textFieldAdresse.getText());
-        s.setSiret(textFieldSiret.getText());
+        raz();
+        List<Error> erreurs = new ArrayList();
         
-        try {
-            SocieteDAO.creer(mainFrame.cnx, s);
-            Annonceur a = new Annonceur(s.getId());
-            AnnonceurDAO.creer(mainFrame.cnx, a);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelAnnonceur, ex.toString());
+        erreurs = verifFormulaire();
+        
+        if(erreurs != null){
+            affichageErreurs(erreurs);
+        }else{
+            Societe s = new Societe();
+            s.setRaisonSociale(textFieldRaisonSociale.getText());
+            s.setTelephone(textFieldTelephone.getText());
+            s.setMail(textFieldEmail.getText());
+            s.setAdresse(textFieldAdresse.getText());
+            s.setSiret(textFieldSiret.getText());
+        
+            try {
+                SocieteDAO.creer(mainFrame.cnx, s);
+                Annonceur a = new Annonceur(s.getId());
+                AnnonceurDAO.creer(mainFrame.cnx, a);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(panelAnnonceur, ex.toString());
+            }
+            JOptionPane.showMessageDialog(panelAnnonceur, "L'ajout a réussi");
+            this.dispose();
         }
-        JOptionPane.showMessageDialog(panelAnnonceur, "L'ajout a réussi");
-        this.dispose();
     }//GEN-LAST:event_buttonAjouterAnnonceurActionPerformed
    
+    private void raz(){
+        labelErreurRaisonSociale.setText(null);
+        labelErreurTelephone.setText(null);
+        labelErreurEmail.setText(null);
+        labelErreurAdresse.setText(null);
+        labelErreurSiret.setText(null);
+    }
+    
+    private void affichageErreurs(List<Error> erreurs){
+        for(Error e : erreurs){
+            switch(e){
+                case raisonSocialeVide : 
+                    this.labelErreurRaisonSociale.setText("Veuillez saisir une raison sociale");
+                    break;
+                case telephoneVide : 
+                    this.labelErreurTelephone.setText("Veuillez saisir un numéro de telephone");
+                    break;
+                case emailVide : 
+                    this.labelErreurEmail.setText("Veuillez saisir une adresse email");
+                    break;
+                case adresseVide : 
+                    this.labelErreurAdresse.setText("Veuillez saisir une adresse");
+                    break;
+                case siretVide : 
+                    this.labelErreurSiret.setText("Veuillez saisir un numéro de siret");
+                    break;
+            }
+        }
+    }
+    
+    private enum Error{
+        raisonSocialeVide,telephoneVide,telephoneInvalide,emailVide,emailInvalide,
+        adresseVide,adresseInvalide,siretVide,siretInvalide;
+    }
+    
+    private List verifFormulaire(){
+        List<Error> erreurs = new ArrayList();
+        
+        if(textFieldRaisonSociale.getText().equals("")){
+            erreurs.add(Error.raisonSocialeVide);
+        }
+        
+        if(textFieldTelephone.getText().equals("")){
+            erreurs.add(Error.telephoneVide);
+        }
+        
+        if(textFieldEmail.getText().equals("")){
+            erreurs.add(Error.emailVide);
+        }
+        
+        if(textFieldAdresse.getText().equals("")){
+            erreurs.add(Error.adresseVide);
+        }
+        
+        if(textFieldSiret.getText().equals("")){
+            erreurs.add(Error.siretVide);
+        }
+        return erreurs;
+    }
+    
+    private boolean regexTelephone(String telephone){
+        Pattern pattern = Pattern.compile("^[0-9]{10}$");
+        Matcher m = pattern.matcher(telephone);
+        boolean b = m.matches();
+        
+        return b;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -210,6 +326,11 @@ public class ajouterAnnonceurFrame extends javax.swing.JFrame {
     private javax.swing.JLabel labelAdresse;
     private javax.swing.JLabel labelAjouterAnnonceur;
     private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelErreurAdresse;
+    private javax.swing.JLabel labelErreurEmail;
+    private javax.swing.JLabel labelErreurRaisonSociale;
+    private javax.swing.JLabel labelErreurSiret;
+    private javax.swing.JLabel labelErreurTelephone;
     private javax.swing.JLabel labelRaisonSociale;
     private javax.swing.JLabel labelSiret;
     private javax.swing.JLabel labelTelephone;

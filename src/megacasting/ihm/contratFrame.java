@@ -9,7 +9,6 @@ package megacasting.ihm;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.YES_OPTION;
 import static megacasting.Fonctions.Error.ErrorTest;
 import megacasting.dao.OffreDAO;
 import megacasting.dao.TypeContratDAO;
@@ -209,10 +208,9 @@ public class contratFrame extends javax.swing.JFrame {
 
     private void buttonSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSupprimerActionPerformed
         TypeContrat tc = (TypeContrat) listeContrat.getSelectedValue();
-        int retour = JOptionPane.YES_NO_OPTION;
-        JOptionPane.showConfirmDialog(panelContrat, "Êtes vous sur de vouloir supprimer ce contrat et toutes les offres qui y sont associées ?", "Attention", retour);
+        int retour = JOptionPane.showConfirmDialog(panelContrat, "Êtes vous sur de vouloir supprimer ce contrat et toutes les offres qui y sont associées ?", "Attention", JOptionPane.YES_NO_OPTION);
         
-        if(retour == YES_OPTION){
+        if(retour == 0){
             List<Offre> loffre = OffreDAO.lister(mainFrame.cnx);
             for(Offre o : loffre){
                 if(o.getIdTypeContrat() == tc.getId()){

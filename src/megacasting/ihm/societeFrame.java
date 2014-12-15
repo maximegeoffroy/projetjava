@@ -6,13 +6,17 @@
 package megacasting.ihm;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import megacasting.dao.AnnonceurDAO;
 import megacasting.dao.DiffuseurDAO;
+import megacasting.dao.OffreDAO;
 import megacasting.dao.SocieteDAO;
 import megacasting.entite.Annonceur;
 import megacasting.entite.Diffuseur;
+import megacasting.entite.Offre;
 import megacasting.entite.Societe;
 
 /**
@@ -391,7 +395,6 @@ public class societeFrame extends javax.swing.JFrame {
         Diffuseur d = DiffuseurDAO.trouver(mainFrame.cnx, s.getId());
 
         if (d != null) {
-
             try {
                 SocieteDAO.supprimer(mainFrame.cnx, s);
             } catch (Exception ex) {
@@ -443,14 +446,26 @@ public class societeFrame extends javax.swing.JFrame {
         Annonceur a = AnnonceurDAO.trouver(mainFrame.cnx, s.getId());
 
         if (a != null) {
-
-            try {
-                SocieteDAO.supprimer(mainFrame.cnx, s);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(panelDiffuseur, ex.toString());
+            int retour = JOptionPane.showConfirmDialog(panelAnnonceur, "Êtes vous sur de vouloir supprimer l'annonceur et les offres qui y sont associées?", "Attention", JOptionPane.YES_NO_OPTION);
+            if(retour == 0){
+                List<Offre> loffre = OffreDAO.lister(mainFrame.cnx);
+                for(Offre o : loffre){
+                    if(a.getId() == o.getIdAnnonceur()){
+                        try {
+                            OffreDAO.supprimer(mainFrame.cnx, o);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                }
+                try {
+                    SocieteDAO.supprimer(mainFrame.cnx, s);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(panelDiffuseur, ex.toString());
+                }
+                JOptionPane.showMessageDialog(panelAnnonceur, "La suppression a réussie");
+                refreshListAnnonceur();
             }
-            JOptionPane.showMessageDialog(panelAnnonceur, "La suppression a réussie");
-            refreshListAnnonceur();
         } else {
             JOptionPane.showMessageDialog(panelAnnonceur, "L'annonceur n'existe pas");
         }

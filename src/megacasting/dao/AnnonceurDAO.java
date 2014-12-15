@@ -107,11 +107,6 @@ public class AnnonceurDAO {
     
     public static void supprimer (Connection connection, Annonceur annonceur) throws Exception{
         Statement stmt = null;
-        Annonceur a = trouver(connection, annonceur.getId());
-        
-        if (a == null){
-            throw new Exception("Cet annonceur n'éxiste pas, il ne peut être supprimer");
-        }
         
         try {
             int id = annonceur.getId();

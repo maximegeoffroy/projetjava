@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <Properties>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[658, 658]"/>
-    </Property>
-  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowGainedFocus" listener="java.awt.event.WindowFocusListener" parameters="java.awt.event.WindowEvent" handler="formWindowGainedFocus"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -25,92 +23,97 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Component id="panelOffre" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="labelGestionOffre" min="-2" pref="156" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="62" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Component id="labelGestionOffre" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="panelOffre" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="panelOffre">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jScrollPane1" pref="235" max="32767" attributes="0"/>
-                          <Component id="buttonSupprimer" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="buttonAjouter" min="-2" pref="235" max="-2" attributes="0"/>
+                      <Component id="buttonSupprimer" alignment="1" min="-2" pref="235" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
+                      <Component id="buttonAjouter" alignment="1" min="-2" pref="235" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="buttonModifier" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="324" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="labelIntitule" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelDatePublication" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelDureeDiffusion" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelDateDebutContrat" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelNbPoste" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelLocalisation" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelDescriptionPoste" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelDescriptionProfil" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelTelephone" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelEmail" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                      <Component id="labelReference" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonModifier" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelTypeContrat" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelMetier" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                      <Component id="labelDomaineMetier" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelAnnonceur" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labelIntitule" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelAnnonceur" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelDomaineMetier" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelReference" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelDatePublication" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelDureeDiffusion" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelDateDebutContrat" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelNbPoste" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelLocalisation" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelDescriptionPoste" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelDescriptionProfil" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="labelMetier" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="labelTelephone" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="labelEmail" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
-                              <Component id="labelTypeContrat" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="comboBoxDateDebutContratJour" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="comboBoxDateDebutContratMois" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="comboBoxDateDebutContratAn" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="textFieldReference" alignment="0" max="32767" attributes="0"/>
-                              <Component id="textFieldIntitule" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="comboBoxDatePublicationJour" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="comboBoxDatePublicationMois" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="comboboxDatePublicationAn" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="comboBoxNombrePoste" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="textFieldDomaineMetier" alignment="0" max="32767" attributes="0"/>
-                              <Component id="textFieldMetier" alignment="0" max="32767" attributes="0"/>
-                              <Component id="textFieldTypeContrat" alignment="0" max="32767" attributes="0"/>
-                              <Component id="textFieldLocalisation" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jScrollPane2" alignment="0" pref="263" max="32767" attributes="0"/>
-                              <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textFieldEmail" alignment="0" max="32767" attributes="0"/>
                               <Component id="textFieldTelephone" alignment="0" max="32767" attributes="0"/>
-                              <Component id="textFieldEmail" alignment="1" max="32767" attributes="0"/>
-                              <Component id="textFieldAnnonceur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textFieldLocalisation" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textFieldIntitule" alignment="1" max="32767" attributes="0"/>
+                              <Component id="textFieldReference" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="comboBoxAnnonceur" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboBoxMetier" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboBoxTypeContrat" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboBoxNombrePoste" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="spinnerDureeDiffusion" min="-2" pref="73" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="labelJour" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="comboBoxDomaineMetier" min="-2" max="-2" attributes="0"/>
+                              <Component id="dateChooserDebutContrat" alignment="0" pref="150" max="32767" attributes="0"/>
+                              <Component id="dateChooserDatePublication" alignment="0" max="32767" attributes="0"/>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -119,14 +122,9 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="313" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="buttonSupprimer" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelIntitule" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="textFieldIntitule" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -137,11 +135,9 @@
                               <Component id="textFieldReference" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="labelDatePublication" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboBoxDatePublicationJour" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboBoxDatePublicationMois" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboboxDatePublicationAn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labelDatePublication" min="-2" max="-2" attributes="0"/>
+                              <Component id="dateChooserDatePublication" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -150,11 +146,9 @@
                               <Component id="spinnerDureeDiffusion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="labelDateDebutContrat" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboBoxDateDebutContratMois" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboBoxDateDebutContratJour" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboBoxDateDebutContratAn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labelDateDebutContrat" min="-2" max="-2" attributes="0"/>
+                              <Component id="dateChooserDebutContrat" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -181,41 +175,46 @@
                               <Component id="textFieldTelephone" min="-2" max="-2" attributes="0"/>
                               <Component id="labelTelephone" min="-2" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="buttonAjouter" min="-2" pref="61" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="textFieldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="labelEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="textFieldTypeContrat" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelTypeContrat" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="buttonAjouter" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="labelTypeContrat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboBoxTypeContrat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="labelMetier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboBoxMetier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="labelDomaineMetier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboBoxDomaineMetier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="textFieldMetier" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelMetier" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="comboBoxAnnonceur" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelAnnonceur" min="-2" max="-2" attributes="0"/>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jScrollPane1" min="-2" pref="313" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="buttonSupprimer" min="-2" pref="55" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="textFieldDomaineMetier" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelDomaineMetier" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="textFieldAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="buttonModifier" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -325,57 +324,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="textFieldTelephone">
         </Component>
-        <Component class="javax.swing.JTextField" name="textFieldTypeContrat">
-        </Component>
-        <Component class="javax.swing.JTextField" name="textFieldMetier">
-        </Component>
-        <Component class="javax.swing.JTextField" name="textFieldDomaineMetier">
-        </Component>
-        <Component class="javax.swing.JTextField" name="textFieldAnnonceur">
-        </Component>
         <Component class="javax.swing.JComboBox" name="comboBoxNombrePoste">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="comboBoxDateDebutContratMois">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="comboBoxDateDebutContratJour">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="comboBoxDateDebutContratAn">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="comboBoxDatePublicationJour">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="comboBoxDatePublicationMois">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="comboboxDatePublicationAn">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
@@ -443,7 +392,52 @@
         </Container>
         <Component class="javax.swing.JSpinner" name="spinnerDureeDiffusion">
         </Component>
+        <Component class="javax.swing.JComboBox" name="comboBoxTypeContrat">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comboBoxMetier">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comboBoxAnnonceur">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comboBoxDomaineMetier">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="dateChooserDatePublication">
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="dateChooserDebutContrat">
+        </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="labelGestionOffre">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Gestion des offres"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

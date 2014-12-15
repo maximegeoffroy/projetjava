@@ -7,13 +7,17 @@
 package megacasting.ihm;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.YES_OPTION;
 import megacasting.dao.DomaineMetierDAO;
 import megacasting.dao.MetierDAO;
+import megacasting.dao.OffreDAO;
 import megacasting.entite.DomaineMetier;
 import megacasting.entite.Metier;
+import megacasting.entite.Offre;
 
 /**
  *
@@ -323,13 +327,27 @@ public class metierFrame extends javax.swing.JFrame {
 
     private void buttonSupprimerMetierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSupprimerMetierActionPerformed
        Metier m = (Metier)listMetier.getSelectedValue();
-        try {
-            MetierDAO.supprimer(mainFrame.cnx, m);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelMetier, ex.toString());
+       int retour = JOptionPane.showConfirmDialog(panelMetier, "Êtes vous sur de vouloir supprimer le métier et toutes les offres qui y sont rattachées ?","Attention",JOptionPane.YES_NO_OPTION);
+       
+       if(retour == 0){
+            List<Offre> loffre = OffreDAO.lister(mainFrame.cnx);
+            for(Offre o : loffre){
+                if(m.getId() == o.getIdMetier()){
+                    try {
+                        OffreDAO.supprimer(mainFrame.cnx, o);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+            try {
+                MetierDAO.supprimer(mainFrame.cnx, m);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(panelMetier, ex.toString());
+            }
+            JOptionPane.showMessageDialog(panelMetier, "Suppression réussie");
+            refreshListMetier();
         }
-        JOptionPane.showMessageDialog(panelMetier, "Suppression réussie");
-        refreshListMetier();
     }//GEN-LAST:event_buttonSupprimerMetierActionPerformed
 
     private void buttonAjouterDomaineMetierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAjouterDomaineMetierActionPerformed
@@ -338,9 +356,8 @@ public class metierFrame extends javax.swing.JFrame {
 
     private void buttonSupprimerDomaineMetierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSupprimerDomaineMetierActionPerformed
         DomaineMetier dm = (DomaineMetier)listDomaineMetier.getSelectedValue();
-        int retour = JOptionPane.YES_NO_OPTION;
-        JOptionPane.showConfirmDialog(panelDomaineMetier, "Êtes vous sur de vouloir surpprimer ce domaine métier et les métiers qui y sont associés ?","Warning", retour);
-        if(retour == YES_OPTION){
+        int retour = JOptionPane.showConfirmDialog(panelDomaineMetier, "Êtes vous sur de vouloir surpprimer ce domaine métier et les métiers qui y sont associés ?","Warning", JOptionPane.YES_NO_OPTION);
+        if(retour == 0){
             List<Metier> lmetier = MetierDAO.lister(mainFrame.cnx);
             for(Metier m : lmetier){
                 if(m.getIdDomaineMetier() == dm.getId()){
