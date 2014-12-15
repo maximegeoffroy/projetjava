@@ -81,11 +81,9 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="labelErreurSiret" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="textFieldRaisonSociale" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="textFieldEmail" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
-                                              <Component id="textFieldTelephone" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="textFieldRaisonSociale" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="textFieldEmail" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
+                                          <Component id="textFieldTelephone" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
                                           <Component id="textFieldAdresse" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
                                           <Component id="labelErreurEmail" alignment="0" max="32767" attributes="0"/>
                                           <Component id="labelErreurAdresse" alignment="0" pref="260" max="32767" attributes="0"/>

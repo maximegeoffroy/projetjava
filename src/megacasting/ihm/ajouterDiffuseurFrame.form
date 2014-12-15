@@ -37,7 +37,7 @@
               <Component id="labelAjouterDiffuseur" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panelDiffuseur" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="89" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,7 +57,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="buttonAjouterDiffuseur" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="labelRaisonSociale" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="labelTelephone" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -72,10 +72,15 @@
                               <Component id="textFieldEmail" max="32767" attributes="0"/>
                               <Component id="textFieldAdresse" max="32767" attributes="0"/>
                               <Component id="textFieldSiret" pref="155" max="32767" attributes="0"/>
+                              <Component id="labelErreurRaisonSociale" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelErreurTelephone" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelErreurEmail" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelErreurAdresse" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelErreurSiret" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="130" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -87,29 +92,39 @@
                       <Component id="labelRaisonSociale" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="textFieldRaisonSociale" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="labelErreurRaisonSociale" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="labelTelephone" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="textFieldTelephone" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="labelErreurTelephone" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="labelEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="textFieldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="labelErreurEmail" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="labelAdresse" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="textFieldAdresse" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="labelErreurAdresse" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="labelSiret" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="textFieldSiret" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="labelErreurSiret" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="buttonAjouterDiffuseur" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace pref="19" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -157,6 +172,41 @@
         <Component class="javax.swing.JTextField" name="textFieldAdresse">
         </Component>
         <Component class="javax.swing.JTextField" name="textFieldSiret">
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurRaisonSociale">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurTelephone">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurEmail">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurAdresse">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurSiret">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

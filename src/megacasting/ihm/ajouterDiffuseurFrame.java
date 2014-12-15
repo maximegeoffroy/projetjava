@@ -5,6 +5,10 @@
  */
 package megacasting.ihm;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import megacasting.dao.DiffuseurDAO;
 import megacasting.dao.SocieteDAO;
@@ -45,6 +49,11 @@ public class ajouterDiffuseurFrame extends javax.swing.JFrame {
         textFieldEmail = new javax.swing.JTextField();
         textFieldAdresse = new javax.swing.JTextField();
         textFieldSiret = new javax.swing.JTextField();
+        labelErreurRaisonSociale = new javax.swing.JLabel();
+        labelErreurTelephone = new javax.swing.JLabel();
+        labelErreurEmail = new javax.swing.JLabel();
+        labelErreurAdresse = new javax.swing.JLabel();
+        labelErreurSiret = new javax.swing.JLabel();
         labelAjouterDiffuseur = new javax.swing.JLabel();
 
         panelDiffuseur.setBackground(new java.awt.Color(153, 153, 153));
@@ -65,6 +74,16 @@ public class ajouterDiffuseurFrame extends javax.swing.JFrame {
         labelAdresse.setText("Adresse");
 
         labelSiret.setText("Siret");
+
+        labelErreurRaisonSociale.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurTelephone.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurEmail.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurAdresse.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurSiret.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout panelDiffuseurLayout = new javax.swing.GroupLayout(panelDiffuseur);
         panelDiffuseur.setLayout(panelDiffuseurLayout);
@@ -87,8 +106,13 @@ public class ajouterDiffuseurFrame extends javax.swing.JFrame {
                             .addComponent(textFieldTelephone)
                             .addComponent(textFieldEmail)
                             .addComponent(textFieldAdresse)
-                            .addComponent(textFieldSiret, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(textFieldSiret, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                            .addComponent(labelErreurRaisonSociale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelErreurTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelErreurEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelErreurAdresse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelErreurSiret, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         panelDiffuseurLayout.setVerticalGroup(
             panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,25 +121,35 @@ public class ajouterDiffuseurFrame extends javax.swing.JFrame {
                 .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelRaisonSociale)
                     .addComponent(textFieldRaisonSociale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelErreurRaisonSociale)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelTelephone)
                     .addComponent(textFieldTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelErreurTelephone)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelEmail)
                     .addComponent(textFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelErreurEmail)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAdresse)
                     .addComponent(textFieldAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelErreurAdresse)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelSiret)
                     .addComponent(textFieldSiret, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(3, 3, 3)
+                .addComponent(labelErreurSiret)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonAjouterDiffuseur)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         labelAjouterDiffuseur.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -139,32 +173,145 @@ public class ajouterDiffuseurFrame extends javax.swing.JFrame {
                 .addComponent(labelAjouterDiffuseur)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelDiffuseur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAjouterDiffuseurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAjouterDiffuseurActionPerformed
+        raz();
         Societe s = new Societe();
-        s.setRaisonSociale(textFieldRaisonSociale.getText());
-        s.setTelephone(textFieldTelephone.getText());
-        s.setMail(textFieldEmail.getText());
-        s.setAdresse(textFieldAdresse.getText());
-        s.setSiret(textFieldSiret.getText());
-        
-        try {
-            SocieteDAO.creer(mainFrame.cnx, s);
-            Diffuseur dif = new Diffuseur(s.getId());
-            DiffuseurDAO.creer(mainFrame.cnx, dif);            
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelDiffuseur, ex.toString());
+
+        List<Error> erreurs = verifFormulaire();
+
+        if (erreurs.isEmpty()) {
+
+            s.setRaisonSociale(textFieldRaisonSociale.getText());
+            s.setTelephone(textFieldTelephone.getText());
+            s.setMail(textFieldEmail.getText());
+            s.setAdresse(textFieldAdresse.getText());
+            s.setSiret(textFieldSiret.getText());
+
+            try {
+                SocieteDAO.creer(mainFrame.cnx, s);
+                Diffuseur dif = new Diffuseur(s.getId());
+                DiffuseurDAO.creer(mainFrame.cnx, dif);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(panelDiffuseur, ex.toString());
+            }
+            JOptionPane.showMessageDialog(panelDiffuseur, "L'ajout a réussi");
+            this.dispose();
+        } else {
+            affichageErreur(erreurs);
         }
-        JOptionPane.showMessageDialog(panelDiffuseur, "L'ajout a réussi");
-        this.dispose();
     }//GEN-LAST:event_buttonAjouterDiffuseurActionPerformed
 
+    private List verifFormulaire() {
+        List<Error> erreurs = new ArrayList();
+
+        if (textFieldRaisonSociale.getText().equals("")) {
+            erreurs.add(Error.raisonSocialeVide);
+        }
+
+        if (textFieldTelephone.getText().equals("")) {
+            erreurs.add(Error.telephoneVide);
+        } else {
+            if (!regexTelephone(textFieldTelephone.getText())) {
+                erreurs.add(Error.telephoneInvalide);
+            }
+        }
+
+        if (textFieldEmail.getText().equals("")) {
+            erreurs.add(Error.emailVide);
+        } else {
+            if (!regexEmail(textFieldEmail.getText())) {
+                erreurs.add(Error.emailInvalide);
+            }
+        }
+
+        if (textFieldAdresse.getText().equals("")) {
+            erreurs.add(Error.adresseVide);
+        }
+
+        if (textFieldSiret.getText().equals("")) {
+            erreurs.add(Error.siretVide);
+        } else {
+            if (!regexSiret(textFieldSiret.getText())) {
+                erreurs.add(Error.siretInvalide);
+            }
+        }
+        return erreurs;
+    }
     
+    private void raz(){
+        labelErreurRaisonSociale.setText(null);
+        labelErreurTelephone.setText(null);
+        labelErreurEmail.setText(null);
+        labelErreurAdresse.setText(null);
+        labelErreurSiret.setText(null);
+    }
+
+    private void affichageErreur(List<Error> erreurs) {
+        for (Error e : erreurs) {
+            switch (e) {
+                case raisonSocialeVide:
+                    this.labelErreurRaisonSociale.setText("Veuillez saisir une raison sociale");
+                    break;
+                case telephoneVide:
+                    this.labelErreurTelephone.setText("Veuillez saisir un numéro de telephone");
+                    break;
+                case telephoneInvalide:
+                    this.labelErreurTelephone.setText("Veuillez saisir un numéro de telephone valide");
+                    break;
+                case emailVide:
+                    this.labelErreurEmail.setText("Veuillez saisir une adresse email");
+                    break;
+                case emailInvalide:
+                    this.labelErreurEmail.setText("Veuillez saisir une adresse email valide");
+                    break;
+                case adresseVide:
+                    this.labelErreurAdresse.setText("Veuillez saisir une adresse");
+                    break;
+                case siretVide:
+                    this.labelErreurSiret.setText("Veuillez saisir un numéro de siret");
+                    break;
+                case siretInvalide:
+                    this.labelErreurSiret.setText("Veuillez saisir un numéro de siret valide");
+                    break;
+            }
+        }
+    }
+
+    private enum Error {
+
+        raisonSocialeVide, telephoneVide, telephoneInvalide, emailVide, emailInvalide, adresseVide, siretVide, siretInvalide;
+    }
+
+    private boolean regexTelephone(String telephone) {
+        Pattern pattern = Pattern.compile("^0[1-68][0-9]{8}$");
+        Matcher m = pattern.matcher(telephone);
+        boolean b = m.matches();
+
+        return b;
+    }
+
+    private boolean regexEmail(String email) {
+        Pattern pattern = Pattern.compile("^[a-z0-9._-]+@[a-z0-9._-]{2,}\\.[a-z]{2,4}$");
+        Matcher m = pattern.matcher(email);
+        boolean b = m.matches();
+
+        return b;
+    }
+
+    private boolean regexSiret(String siret) {
+        Pattern pattern = Pattern.compile("^[0-9]{14}$");
+        Matcher m = pattern.matcher(siret);
+        boolean b = m.matches();
+
+        return b;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -179,16 +326,21 @@ public class ajouterDiffuseurFrame extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ajouterDiffuseurFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ajouterDiffuseurFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ajouterDiffuseurFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ajouterDiffuseurFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ajouterDiffuseurFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ajouterDiffuseurFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ajouterDiffuseurFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ajouterDiffuseurFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -205,6 +357,11 @@ public class ajouterDiffuseurFrame extends javax.swing.JFrame {
     private javax.swing.JLabel labelAdresse;
     private javax.swing.JLabel labelAjouterDiffuseur;
     private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelErreurAdresse;
+    private javax.swing.JLabel labelErreurEmail;
+    private javax.swing.JLabel labelErreurRaisonSociale;
+    private javax.swing.JLabel labelErreurSiret;
+    private javax.swing.JLabel labelErreurTelephone;
     private javax.swing.JLabel labelRaisonSociale;
     private javax.swing.JLabel labelSiret;
     private javax.swing.JLabel labelTelephone;

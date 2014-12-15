@@ -6,6 +6,7 @@
 package megacasting.ihm;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -192,13 +193,10 @@ public class ajouterAnnonceurFrame extends javax.swing.JFrame {
 
     private void buttonAjouterAnnonceurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAjouterAnnonceurActionPerformed
         raz();
-        List<Error> erreurs = new ArrayList();
         
-        erreurs = verifFormulaire();
+        List<Error> erreurs = verifFormulaire();
         
-        if(erreurs != null){
-            affichageErreurs(erreurs);
-        }else{
+        if(erreurs.isEmpty()){
             Societe s = new Societe();
             s.setRaisonSociale(textFieldRaisonSociale.getText());
             s.setTelephone(textFieldTelephone.getText());
@@ -215,6 +213,8 @@ public class ajouterAnnonceurFrame extends javax.swing.JFrame {
             }
             JOptionPane.showMessageDialog(panelAnnonceur, "L'ajout a réussi");
             this.dispose();
+        }else{
+            affichageErreurs(erreurs);
         }
     }//GEN-LAST:event_buttonAjouterAnnonceurActionPerformed
    
@@ -235,14 +235,23 @@ public class ajouterAnnonceurFrame extends javax.swing.JFrame {
                 case telephoneVide : 
                     this.labelErreurTelephone.setText("Veuillez saisir un numéro de telephone");
                     break;
+                case telephoneInvalide : 
+                    this.labelErreurTelephone.setText("Veuillez saisir un numéro de telephone valide");
+                    break;
                 case emailVide : 
                     this.labelErreurEmail.setText("Veuillez saisir une adresse email");
+                    break;
+                case emailInvalide : 
+                    this.labelErreurEmail.setText("Veuillez saisir une adresse email valide");
                     break;
                 case adresseVide : 
                     this.labelErreurAdresse.setText("Veuillez saisir une adresse");
                     break;
                 case siretVide : 
                     this.labelErreurSiret.setText("Veuillez saisir un numéro de siret");
+                    break;
+                case siretInvalide : 
+                    this.labelErreurSiret.setText("Veuillez saisir un numéro de siret valide");
                     break;
             }
         }
@@ -262,10 +271,19 @@ public class ajouterAnnonceurFrame extends javax.swing.JFrame {
         
         if(textFieldTelephone.getText().equals("")){
             erreurs.add(Error.telephoneVide);
+        }else{
+            if(!regexTelephone(textFieldTelephone.getText())){
+                erreurs.add(Error.telephoneInvalide);
+            }
+            
         }
         
         if(textFieldEmail.getText().equals("")){
             erreurs.add(Error.emailVide);
+        }else{
+            if(!regexEmail(textFieldEmail.getText())){
+                erreurs.add(Error.emailInvalide);
+            }
         }
         
         if(textFieldAdresse.getText().equals("")){
@@ -274,13 +292,33 @@ public class ajouterAnnonceurFrame extends javax.swing.JFrame {
         
         if(textFieldSiret.getText().equals("")){
             erreurs.add(Error.siretVide);
+        }else{
+            if(!regexSiret(textFieldSiret.getText())){
+                erreurs.add(Error.siretInvalide);
+            }
         }
         return erreurs;
     }
     
     private boolean regexTelephone(String telephone){
-        Pattern pattern = Pattern.compile("^[0-9]{10}$");
+        Pattern pattern = Pattern.compile("^0[1-68][0-9]{8}$");
         Matcher m = pattern.matcher(telephone);
+        boolean b = m.matches();
+        
+        return b;
+    }
+    
+    private boolean regexEmail(String email){
+        Pattern pattern = Pattern.compile("^[a-z0-9._-]+@[a-z0-9._-]{2,}\\.[a-z]{2,4}$");
+        Matcher m = pattern.matcher(email);
+        boolean b = m.matches();
+        
+        return b;
+    }
+    
+    private boolean regexSiret(String siret){
+        Pattern pattern = Pattern.compile("^[0-9]{14}$");
+        Matcher m = pattern.matcher(siret);
         boolean b = m.matches();
         
         return b;

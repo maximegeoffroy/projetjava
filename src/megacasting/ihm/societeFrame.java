@@ -5,9 +5,10 @@
  */
 package megacasting.ihm;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import megacasting.dao.AnnonceurDAO;
@@ -60,6 +61,11 @@ public class societeFrame extends javax.swing.JFrame {
         buttonModifierDiffuseur = new javax.swing.JButton();
         buttonSupprimerDiffuseur = new javax.swing.JButton();
         buttonAjouterDiffuseur = new javax.swing.JButton();
+        labelErreurRaisonSocialeDiffuseur = new javax.swing.JLabel();
+        labelErreurTelephoneDiffuseur = new javax.swing.JLabel();
+        labelErreurEmailDiffuseur = new javax.swing.JLabel();
+        labelErreurAdresseDiffuseur = new javax.swing.JLabel();
+        labelErreurSiretDiffuseur = new javax.swing.JLabel();
         labelGestionSociete = new javax.swing.JLabel();
         panelAnnonceur = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -78,6 +84,11 @@ public class societeFrame extends javax.swing.JFrame {
         buttonModifierAnnonceur = new javax.swing.JButton();
         buttonSupprimerAnnonceur = new javax.swing.JButton();
         buttonAjouterAnnonceur = new javax.swing.JButton();
+        labelErreurRaisonSocialeAnnonceur = new javax.swing.JLabel();
+        labelErreurTelephoneAnnonceur = new javax.swing.JLabel();
+        labelErreurEmailAnnonceur = new javax.swing.JLabel();
+        labelErreurAdresseAnnonceur = new javax.swing.JLabel();
+        labelErreurSiretAnnonceur = new javax.swing.JLabel();
 
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
@@ -131,40 +142,53 @@ public class societeFrame extends javax.swing.JFrame {
             }
         });
 
+        labelErreurRaisonSocialeDiffuseur.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurTelephoneDiffuseur.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurEmailDiffuseur.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurAdresseDiffuseur.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurSiretDiffuseur.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout panelDiffuseurLayout = new javax.swing.GroupLayout(panelDiffuseur);
         panelDiffuseur.setLayout(panelDiffuseurLayout);
         panelDiffuseurLayout.setHorizontalGroup(
             panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDiffuseurLayout.createSequentialGroup()
-                .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addContainerGap()
+                .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelDiffuseurs)
                     .addGroup(panelDiffuseurLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelDiffuseurs)
-                            .addGroup(panelDiffuseurLayout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelRaisonSocialeDiffuseur)
-                                    .addComponent(labelTelephoneDiffuseur)
-                                    .addComponent(labelEmailDiffuseur)
-                                    .addComponent(labelAdresseDiffuseur)
-                                    .addComponent(labelSiretDiffuseur))
-                                .addGap(18, 18, 18)
-                                .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textFieldSiretDiffuseur, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                                    .addComponent(textFieldRaisonSocialeDiffuseur)
-                                    .addComponent(textFieldTelephoneDiffuseur)
-                                    .addComponent(textFieldEmailDiffuseur)
-                                    .addComponent(textFieldAdresseDiffuseur)))))
+                            .addComponent(labelRaisonSocialeDiffuseur)
+                            .addComponent(labelTelephoneDiffuseur)
+                            .addComponent(labelEmailDiffuseur)
+                            .addComponent(labelAdresseDiffuseur)
+                            .addComponent(labelSiretDiffuseur))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textFieldSiretDiffuseur, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                            .addComponent(textFieldAdresseDiffuseur)
+                            .addComponent(labelErreurRaisonSocialeDiffuseur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelErreurTelephoneDiffuseur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelErreurEmailDiffuseur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelErreurAdresseDiffuseur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelErreurSiretDiffuseur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textFieldRaisonSocialeDiffuseur)
+                            .addComponent(textFieldTelephoneDiffuseur)
+                            .addComponent(textFieldEmailDiffuseur)))
                     .addGroup(panelDiffuseurLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(20, 20, 20)
                         .addComponent(buttonSupprimerDiffuseur)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonModifierDiffuseur)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonAjouterDiffuseur)
-                .addGap(49, 49, 49))
+                .addGap(26, 26, 26))
         );
         panelDiffuseurLayout.setVerticalGroup(
             panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,37 +196,44 @@ public class societeFrame extends javax.swing.JFrame {
                 .addComponent(labelDiffuseurs)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelDiffuseurLayout.createSequentialGroup()
                         .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelRaisonSocialeDiffuseur)
                             .addComponent(textFieldRaisonSocialeDiffuseur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelErreurRaisonSocialeDiffuseur)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelTelephoneDiffuseur)
                             .addComponent(textFieldTelephoneDiffuseur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelErreurTelephoneDiffuseur)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelEmailDiffuseur)
                             .addComponent(textFieldEmailDiffuseur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(buttonAjouterDiffuseur))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelErreurEmailDiffuseur)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelAdresseDiffuseur)
                             .addComponent(textFieldAdresseDiffuseur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelErreurAdresseDiffuseur)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelSiretDiffuseur)
-                            .addComponent(textFieldSiretDiffuseur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(textFieldSiretDiffuseur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDiffuseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelDiffuseurLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addComponent(buttonModifierDiffuseur)
-                        .addContainerGap())
-                    .addGroup(panelDiffuseurLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonSupprimerDiffuseur)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(labelErreurSiretDiffuseur)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addComponent(buttonModifierDiffuseur))
+                    .addComponent(buttonSupprimerDiffuseur))
+                .addContainerGap())
         );
 
         labelGestionSociete.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -252,40 +283,53 @@ public class societeFrame extends javax.swing.JFrame {
             }
         });
 
+        labelErreurRaisonSocialeAnnonceur.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurTelephoneAnnonceur.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurEmailAnnonceur.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurAdresseAnnonceur.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErreurSiretAnnonceur.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout panelAnnonceurLayout = new javax.swing.GroupLayout(panelAnnonceur);
         panelAnnonceur.setLayout(panelAnnonceurLayout);
         panelAnnonceurLayout.setHorizontalGroup(
             panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAnnonceurLayout.createSequentialGroup()
-                .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addContainerGap()
+                .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelAnnonceurs)
                     .addGroup(panelAnnonceurLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelAnnonceurs)
-                            .addGroup(panelAnnonceurLayout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelRaisonSocialeAnnonceur)
-                                    .addComponent(labelTelephoneAnnonceur)
-                                    .addComponent(labelEmailAnnonceur)
-                                    .addComponent(labelAdresseAnnonceur)
-                                    .addComponent(labelSiretAnnonceur))
-                                .addGap(18, 18, 18)
-                                .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textFieldSiretAnnonceur, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                                    .addComponent(textFieldRaisonSocialeAnnonceur)
-                                    .addComponent(textFieldTelephoneAnnonceur)
-                                    .addComponent(textFieldEmailAnnonceur)
-                                    .addComponent(textFieldAdresseAnnonceur)))))
-                    .addGroup(panelAnnonceurLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                            .addComponent(labelRaisonSocialeAnnonceur)
+                            .addComponent(labelTelephoneAnnonceur)
+                            .addComponent(labelEmailAnnonceur)
+                            .addComponent(labelAdresseAnnonceur)
+                            .addComponent(labelSiretAnnonceur))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textFieldAdresseAnnonceur, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                            .addComponent(textFieldEmailAnnonceur)
+                            .addComponent(textFieldTelephoneAnnonceur)
+                            .addComponent(textFieldRaisonSocialeAnnonceur)
+                            .addComponent(labelErreurRaisonSocialeAnnonceur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelErreurTelephoneAnnonceur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelErreurEmailAnnonceur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelErreurAdresseAnnonceur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelErreurSiretAnnonceur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textFieldSiretAnnonceur)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAnnonceurLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addComponent(buttonSupprimerAnnonceur)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonModifierAnnonceur)))
-                .addGap(104, 104, 104)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addComponent(buttonAjouterAnnonceur)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelAnnonceurLayout.setVerticalGroup(
             panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,37 +337,46 @@ public class societeFrame extends javax.swing.JFrame {
                 .addComponent(labelAnnonceurs)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelAnnonceurLayout.createSequentialGroup()
                         .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelRaisonSocialeAnnonceur)
                             .addComponent(textFieldRaisonSocialeAnnonceur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelErreurRaisonSocialeAnnonceur)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelTelephoneAnnonceur)
                             .addComponent(textFieldTelephoneAnnonceur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelErreurTelephoneAnnonceur)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelEmailAnnonceur)
                             .addComponent(textFieldEmailAnnonceur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(buttonAjouterAnnonceur))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelErreurEmailAnnonceur)
+                        .addGap(2, 2, 2)
                         .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelAdresseAnnonceur)
                             .addComponent(textFieldAdresseAnnonceur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelSiretAnnonceur)
-                            .addComponent(textFieldSiretAnnonceur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAnnonceurLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addComponent(buttonModifierAnnonceur)
-                        .addContainerGap())
-                    .addGroup(panelAnnonceurLayout.createSequentialGroup()
+                        .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelAnnonceurLayout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(labelSiretAnnonceur))
+                            .addGroup(panelAnnonceurLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelErreurAdresseAnnonceur)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textFieldSiretAnnonceur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonSupprimerAnnonceur)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(labelErreurSiretAnnonceur))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelAnnonceurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonModifierAnnonceur)
+                    .addComponent(buttonSupprimerAnnonceur))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -332,30 +385,30 @@ public class societeFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelGestionSociete, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(panelDiffuseur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelGestionSociete, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 581, Short.MAX_VALUE))
+                    .addComponent(panelDiffuseur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(20, Short.MAX_VALUE)
-                    .addComponent(panelAnnonceur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(panelAnnonceur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(12, 12, 12)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labelGestionSociete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 296, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 362, Short.MAX_VALUE)
                 .addComponent(panelDiffuseur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
+                .addGap(103, 103, 103))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(38, 38, 38)
                     .addComponent(panelAnnonceur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(334, Short.MAX_VALUE)))
+                    .addContainerGap(375, Short.MAX_VALUE)))
         );
 
         pack();
@@ -374,20 +427,29 @@ public class societeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_listDiffuseurValueChanged
 
     private void buttonModifierDiffuseurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModifierDiffuseurActionPerformed
+        raz();
         Societe s = (Societe) listDiffuseur.getSelectedValue();
-        s.setRaisonSociale(textFieldRaisonSocialeDiffuseur.getText());
-        s.setTelephone(textFieldTelephoneDiffuseur.getText());
-        s.setMail(textFieldEmailDiffuseur.getText());
-        s.setAdresse(textFieldAdresseDiffuseur.getText());
-        s.setSiret(textFieldSiretDiffuseur.getText());
 
-        try {
-            SocieteDAO.modifier(mainFrame.cnx, s);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelDiffuseur, ex.toString());
+        List<Error> erreursDiffuseur = verifFormulaireDiffuseur();
+
+        if (erreursDiffuseur.isEmpty()) {
+
+            s.setRaisonSociale(textFieldRaisonSocialeDiffuseur.getText());
+            s.setTelephone(textFieldTelephoneDiffuseur.getText());
+            s.setMail(textFieldEmailDiffuseur.getText());
+            s.setAdresse(textFieldAdresseDiffuseur.getText());
+            s.setSiret(textFieldSiretDiffuseur.getText());
+
+            try {
+                SocieteDAO.modifier(mainFrame.cnx, s);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(panelDiffuseur, ex.toString());
+            }
+            JOptionPane.showMessageDialog(panelDiffuseur, "La modification à réussie");
+            refreshListDiffuseur(listDiffuseur.getSelectedIndex());
+        } else {
+            affichageErreursDiffuseur(erreursDiffuseur);
         }
-        JOptionPane.showMessageDialog(panelDiffuseur, "La modification à réussie");
-        refreshListDiffuseur(listDiffuseur.getSelectedIndex());
     }//GEN-LAST:event_buttonModifierDiffuseurActionPerformed
 
     private void buttonSupprimerDiffuseurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSupprimerDiffuseurActionPerformed
@@ -419,26 +481,34 @@ public class societeFrame extends javax.swing.JFrame {
             textFieldTelephoneAnnonceur.setText(s.getTelephone());
             textFieldEmailAnnonceur.setText(s.getMail());
             textFieldAdresseAnnonceur.setText(s.getAdresse());
-            textFieldSiretAnnonceur.setText(s.toString());
+            textFieldSiretAnnonceur.setText(s.getSiret());
         }
 
     }//GEN-LAST:event_listAnnonceurValueChanged
 
     private void buttonModifierAnnonceurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModifierAnnonceurActionPerformed
+        raz();
         Societe s = (Societe) listAnnonceur.getSelectedValue();
-        s.setRaisonSociale(textFieldRaisonSocialeAnnonceur.getText());
-        s.setTelephone(textFieldTelephoneAnnonceur.getText());
-        s.setMail(textFieldEmailAnnonceur.getText());
-        s.setAdresse(textFieldAdresseAnnonceur.getText());
-        s.setSiret(textFieldSiretAnnonceur.getText());
 
-        try {
-            SocieteDAO.modifier(mainFrame.cnx, s);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelAnnonceur, ex.toString());
+        List<Error> erreursAnnonceur = verifFormulaireAnnonceur();
+
+        if (erreursAnnonceur.isEmpty()) {
+            s.setRaisonSociale(textFieldRaisonSocialeAnnonceur.getText());
+            s.setTelephone(textFieldTelephoneAnnonceur.getText());
+            s.setMail(textFieldEmailAnnonceur.getText());
+            s.setAdresse(textFieldAdresseAnnonceur.getText());
+            s.setSiret(textFieldSiretAnnonceur.getText());
+
+            try {
+                SocieteDAO.modifier(mainFrame.cnx, s);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(panelAnnonceur, ex.toString());
+            }
+            JOptionPane.showMessageDialog(panelAnnonceur, "La modification à réussie");
+            refreshListAnnonceur(listAnnonceur.getSelectedIndex());
+        } else {
+            affichageErreursAnnonceur(erreursAnnonceur);
         }
-        JOptionPane.showMessageDialog(panelAnnonceur, "La modification à réussie");
-        refreshListAnnonceur(listAnnonceur.getSelectedIndex());
     }//GEN-LAST:event_buttonModifierAnnonceurActionPerformed
 
     private void buttonSupprimerAnnonceurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSupprimerAnnonceurActionPerformed
@@ -447,10 +517,10 @@ public class societeFrame extends javax.swing.JFrame {
 
         if (a != null) {
             int retour = JOptionPane.showConfirmDialog(panelAnnonceur, "Êtes vous sur de vouloir supprimer l'annonceur et les offres qui y sont associées?", "Attention", JOptionPane.YES_NO_OPTION);
-            if(retour == 0){
+            if (retour == 0) {
                 List<Offre> loffre = OffreDAO.lister(mainFrame.cnx);
-                for(Offre o : loffre){
-                    if(a.getId() == o.getIdAnnonceur()){
+                for (Offre o : loffre) {
+                    if (a.getId() == o.getIdAnnonceur()) {
                         try {
                             OffreDAO.supprimer(mainFrame.cnx, o);
                         } catch (Exception ex) {
@@ -540,6 +610,186 @@ public class societeFrame extends javax.swing.JFrame {
         }
     }
 
+    private enum Error {
+
+        raisonSocialeVide, telephoneVide, telephoneInvalide, emailVide, emailInvalide, adresseVide, siretVide, siretInvalide;
+    }
+
+    private void raz() {
+        //Annonceur
+        labelErreurRaisonSocialeAnnonceur.setText(null);
+        labelErreurTelephoneAnnonceur.setText(null);
+        labelErreurEmailAnnonceur.setText(null);
+        labelErreurAdresseAnnonceur.setText(null);
+        labelErreurSiretAnnonceur.setText(null);
+        //Diffuseur
+        labelErreurRaisonSocialeDiffuseur.setText(null);
+        labelErreurTelephoneDiffuseur.setText(null);
+        labelErreurEmailDiffuseur.setText(null);
+        labelErreurAdresseDiffuseur.setText(null);
+        labelErreurSiretDiffuseur.setText(null);
+    }
+
+    private List verifFormulaireAnnonceur() {
+        List<Error> erreursAnnonceur = new ArrayList();
+
+        if (textFieldRaisonSocialeAnnonceur.getText().equals("")) {
+            erreursAnnonceur.add(Error.raisonSocialeVide);
+        }
+
+        if (textFieldTelephoneAnnonceur.getText().equals("")) {
+            erreursAnnonceur.add(Error.telephoneVide);
+        } else {
+            if (!regexTelephone(textFieldTelephoneAnnonceur.getText())) {
+                erreursAnnonceur.add(Error.telephoneInvalide);
+            }
+        }
+
+        if (textFieldEmailAnnonceur.getText().equals("")) {
+            erreursAnnonceur.add(Error.emailVide);
+        } else {
+            if (!regexEmail(textFieldEmailAnnonceur.getText())) {
+                erreursAnnonceur.add(Error.emailInvalide);
+            }
+        }
+
+        if (textFieldAdresseAnnonceur.getText().equals("")) {
+            erreursAnnonceur.add(Error.adresseVide);
+        }
+
+        if (textFieldSiretAnnonceur.getText().equals("")) {
+            erreursAnnonceur.add(Error.siretVide);
+        } else {
+            if (!regexSiret(textFieldSiretAnnonceur.getText())) {
+                erreursAnnonceur.add(Error.siretInvalide);
+            }
+        }
+        return erreursAnnonceur;
+    }
+
+    private List verifFormulaireDiffuseur() {
+        List<Error> erreursDiffuseur = new ArrayList();
+
+        if (textFieldRaisonSocialeDiffuseur.getText().equals("")) {
+            erreursDiffuseur.add(Error.raisonSocialeVide);
+        }
+
+        if (textFieldTelephoneDiffuseur.getText().equals("")) {
+            erreursDiffuseur.add(Error.telephoneVide);
+        } else {
+            if (!regexTelephone(textFieldTelephoneDiffuseur.getText())) {
+                erreursDiffuseur.add(Error.telephoneInvalide);
+            }
+        }
+
+        if (textFieldEmailDiffuseur.getText().equals("")) {
+            erreursDiffuseur.add(Error.emailVide);
+        } else {
+            if (!regexEmail(textFieldEmailDiffuseur.getText())) {
+                erreursDiffuseur.add(Error.emailInvalide);
+            }
+        }
+
+        if (textFieldAdresseDiffuseur.getText().equals("")) {
+            erreursDiffuseur.add(Error.adresseVide);
+        }
+
+        if (textFieldSiretDiffuseur.getText().equals("")) {
+            erreursDiffuseur.add(Error.siretVide);
+        } else {
+            if (!regexSiret(textFieldSiretDiffuseur.getText())) {
+                erreursDiffuseur.add(Error.siretInvalide);
+            }
+        }
+        return erreursDiffuseur;
+    }
+
+    private void affichageErreursAnnonceur(List<Error> erreursAnnonceur) {
+        for (Error e : erreursAnnonceur) {
+            switch (e) {
+                case raisonSocialeVide:
+                    this.labelErreurRaisonSocialeAnnonceur.setText("Veuillez saisir une raison sociale");
+                    break;
+                case telephoneVide:
+                    this.labelErreurTelephoneAnnonceur.setText("Veuillez saisir un numéro de telephone");
+                    break;
+                case telephoneInvalide:
+                    this.labelErreurTelephoneAnnonceur.setText("Veuillez saisir un numéro de telephone valide");
+                    break;
+                case emailVide:
+                    this.labelErreurEmailAnnonceur.setText("Veuillez saisir une adresse email");
+                    break;
+                case emailInvalide:
+                    this.labelErreurEmailAnnonceur.setText("Veuillez saisir une adresse email valide");
+                    break;
+                case adresseVide:
+                    this.labelErreurAdresseAnnonceur.setText("Veuillez saisir une adresse");
+                    break;
+                case siretVide:
+                    this.labelErreurSiretAnnonceur.setText("Veuillez saisir un numéro de siret");
+                    break;
+                case siretInvalide:
+                    this.labelErreurSiretAnnonceur.setText("Veuillez saisir un numéro de siret valide");
+                    break;
+            }
+        }
+    }
+
+    private void affichageErreursDiffuseur(List<Error> erreursDiffuseur) {
+        for (Error e : erreursDiffuseur) {
+            switch (e) {
+                case raisonSocialeVide:
+                    this.labelErreurRaisonSocialeDiffuseur.setText("Veuillez saisir une raison sociale");
+                    break;
+                case telephoneVide:
+                    this.labelErreurTelephoneDiffuseur.setText("Veuillez saisir un numéro de telephone");
+                    break;
+                case telephoneInvalide:
+                    this.labelErreurTelephoneDiffuseur.setText("Veuillez saisir un numéro de telephone valide");
+                    break;
+                case emailVide:
+                    this.labelErreurEmailDiffuseur.setText("Veuillez saisir une adresse email");
+                    break;
+                case emailInvalide:
+                    this.labelErreurEmailDiffuseur.setText("Veuillez saisir une adresse email valide");
+                    break;
+                case adresseVide:
+                    this.labelErreurAdresseDiffuseur.setText("Veuillez saisir une adresse");
+                    break;
+                case siretVide:
+                    this.labelErreurSiretDiffuseur.setText("Veuillez saisir un numéro de siret");
+                    break;
+                case siretInvalide:
+                    this.labelErreurSiretDiffuseur.setText("Veuillez saisir un numéro de siret valide");
+                    break;
+            }
+        }
+    }
+
+    private boolean regexTelephone(String telephone) {
+        Pattern pattern = Pattern.compile("^0[1-68][0-9]{8}$");
+        Matcher m = pattern.matcher(telephone);
+        boolean b = m.matches();
+
+        return b;
+    }
+
+    private boolean regexEmail(String email) {
+        Pattern pattern = Pattern.compile("^[a-z0-9._-]+@[a-z0-9._-]{2,}\\.[a-z]{2,4}$");
+        Matcher m = pattern.matcher(email);
+        boolean b = m.matches();
+
+        return b;
+    }
+
+    private boolean regexSiret(String siret) {
+        Pattern pattern = Pattern.compile("^[0-9]{14}$");
+        Matcher m = pattern.matcher(siret);
+        boolean b = m.matches();
+
+        return b;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -590,6 +840,16 @@ public class societeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel labelDiffuseurs;
     private javax.swing.JLabel labelEmailAnnonceur;
     private javax.swing.JLabel labelEmailDiffuseur;
+    private javax.swing.JLabel labelErreurAdresseAnnonceur;
+    private javax.swing.JLabel labelErreurAdresseDiffuseur;
+    private javax.swing.JLabel labelErreurEmailAnnonceur;
+    private javax.swing.JLabel labelErreurEmailDiffuseur;
+    private javax.swing.JLabel labelErreurRaisonSocialeAnnonceur;
+    private javax.swing.JLabel labelErreurRaisonSocialeDiffuseur;
+    private javax.swing.JLabel labelErreurSiretAnnonceur;
+    private javax.swing.JLabel labelErreurSiretDiffuseur;
+    private javax.swing.JLabel labelErreurTelephoneAnnonceur;
+    private javax.swing.JLabel labelErreurTelephoneDiffuseur;
     private javax.swing.JLabel labelGestionSociete;
     private javax.swing.JLabel labelRaisonSocialeAnnonceur;
     private javax.swing.JLabel labelRaisonSocialeDiffuseur;

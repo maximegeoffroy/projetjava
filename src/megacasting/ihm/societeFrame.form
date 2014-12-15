@@ -23,20 +23,21 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="labelGestionSociete" min="-2" pref="168" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="20" max="32767" attributes="0"/>
-              <Component id="panelDiffuseur" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="labelGestionSociete" min="-2" pref="168" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="581" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="panelDiffuseur" alignment="1" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
-                  <Component id="panelAnnonceur" min="-2" max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="panelAnnonceur" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -46,15 +47,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="labelGestionSociete" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="296" max="32767" attributes="0"/>
+              <EmptySpace pref="362" max="32767" attributes="0"/>
               <Component id="panelDiffuseur" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="panelAnnonceur" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="334" max="32767" attributes="0"/>
+                  <EmptySpace pref="375" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -72,42 +73,43 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="labelDiffuseurs" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jScrollPane1" min="-2" pref="137" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labelDiffuseurs" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="jScrollPane1" min="-2" pref="137" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="labelRaisonSocialeDiffuseur" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelTelephoneDiffuseur" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelEmailDiffuseur" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelAdresseDiffuseur" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelSiretDiffuseur" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="textFieldSiretDiffuseur" pref="111" max="32767" attributes="0"/>
-                                      <Component id="textFieldRaisonSocialeDiffuseur" max="32767" attributes="0"/>
-                                      <Component id="textFieldTelephoneDiffuseur" max="32767" attributes="0"/>
-                                      <Component id="textFieldEmailDiffuseur" max="32767" attributes="0"/>
-                                      <Component id="textFieldAdresseDiffuseur" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="labelRaisonSocialeDiffuseur" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelTelephoneDiffuseur" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelEmailDiffuseur" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelAdresseDiffuseur" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelSiretDiffuseur" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="textFieldSiretDiffuseur" pref="240" max="32767" attributes="0"/>
+                              <Component id="textFieldAdresseDiffuseur" max="32767" attributes="0"/>
+                              <Component id="labelErreurRaisonSocialeDiffuseur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelErreurTelephoneDiffuseur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelErreurEmailDiffuseur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelErreurAdresseDiffuseur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelErreurSiretDiffuseur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textFieldRaisonSocialeDiffuseur" max="32767" attributes="0"/>
+                              <Component id="textFieldTelephoneDiffuseur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textFieldEmailDiffuseur" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="buttonSupprimerDiffuseur" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="buttonModifierDiffuseur" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="90" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="buttonAjouterDiffuseur" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -117,47 +119,53 @@
                   <Component id="labelDiffuseurs" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="150" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelRaisonSocialeDiffuseur" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="textFieldRaisonSocialeDiffuseur" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelErreurRaisonSocialeDiffuseur" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelTelephoneDiffuseur" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="textFieldTelephoneDiffuseur" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelErreurTelephoneDiffuseur" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelEmailDiffuseur" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="textFieldEmailDiffuseur" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="buttonAjouterDiffuseur" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelErreurEmailDiffuseur" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelAdresseDiffuseur" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="textFieldAdresseDiffuseur" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelErreurAdresseDiffuseur" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelSiretDiffuseur" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="textFieldSiretDiffuseur" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <Component id="jScrollPane1" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="17" max="32767" attributes="0"/>
+                          <Component id="labelErreurSiretDiffuseur" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="10" max="32767" attributes="0"/>
                           <Component id="buttonModifierDiffuseur" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="buttonSupprimerDiffuseur" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="buttonSupprimerDiffuseur" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -254,6 +262,41 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAjouterDiffuseurActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurRaisonSocialeDiffuseur">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurTelephoneDiffuseur">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurEmailDiffuseur">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurAdresseDiffuseur">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurSiretDiffuseur">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="labelGestionSociete">
@@ -275,42 +318,43 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="labelAnnonceurs" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jScrollPane2" min="-2" pref="137" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labelAnnonceurs" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jScrollPane2" min="-2" pref="137" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="labelRaisonSocialeAnnonceur" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelTelephoneAnnonceur" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelEmailAnnonceur" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelAdresseAnnonceur" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelSiretAnnonceur" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="textFieldSiretAnnonceur" alignment="0" pref="111" max="32767" attributes="0"/>
-                                      <Component id="textFieldRaisonSocialeAnnonceur" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="textFieldTelephoneAnnonceur" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="textFieldEmailAnnonceur" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="textFieldAdresseAnnonceur" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="labelRaisonSocialeAnnonceur" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelTelephoneAnnonceur" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelEmailAnnonceur" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelAdresseAnnonceur" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelSiretAnnonceur" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="textFieldAdresseAnnonceur" pref="240" max="32767" attributes="0"/>
+                              <Component id="textFieldEmailAnnonceur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textFieldTelephoneAnnonceur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textFieldRaisonSocialeAnnonceur" max="32767" attributes="0"/>
+                              <Component id="labelErreurRaisonSocialeAnnonceur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelErreurTelephoneAnnonceur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelErreurEmailAnnonceur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelErreurAdresseAnnonceur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelErreurSiretAnnonceur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textFieldSiretAnnonceur" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="buttonSupprimerAnnonceur" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="buttonModifierAnnonceur" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                  <EmptySpace pref="109" max="32767" attributes="0"/>
                   <Component id="buttonAjouterAnnonceur" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -320,47 +364,56 @@
                   <Component id="labelAnnonceurs" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane2" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelRaisonSocialeAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="textFieldRaisonSocialeAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelErreurRaisonSocialeAnnonceur" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelTelephoneAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="textFieldTelephoneAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelErreurTelephoneAnnonceur" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelEmailAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="textFieldEmailAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="buttonAjouterAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelErreurEmailAnnonceur" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelAdresseAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="textFieldAdresseAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="labelSiretAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="textFieldSiretAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <Component id="labelSiretAnnonceur" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="labelErreurAdresseAnnonceur" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="textFieldSiretAnnonceur" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                      </Group>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="17" max="32767" attributes="0"/>
-                          <Component id="buttonModifierAnnonceur" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelErreurSiretAnnonceur" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="buttonSupprimerAnnonceur" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jScrollPane2" min="-2" pref="211" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="buttonModifierAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonSupprimerAnnonceur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -456,6 +509,41 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAjouterAnnonceurActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurRaisonSocialeAnnonceur">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurTelephoneAnnonceur">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurEmailAnnonceur">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurAdresseAnnonceur">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErreurSiretAnnonceur">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
